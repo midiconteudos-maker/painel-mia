@@ -1,11 +1,13 @@
-name: Atualiza Subs Ativos
+name: Painel Automatico - Subs Ativos
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # a cada 3 horas
+    - cron: '0 */3 * * *'
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - '.github/workflows/atualiza.yml'
 
 permissions:
   contents: write
@@ -17,12 +19,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Script - Só subs ATIVOS
+
+      - name: Instala deps
+        run: npm install node-fetch@2
+
+      - name: Atualiza subs automaticamente (sem precisar editar na mão)
         run: |
-          mkdir -p scripts
+          mkdir -p data scripts
           cat > scripts/update.js << 'JS'
           const fetch = require('node-fetch');
           const fs = require('fs');
@@ -35,115 +42,189 @@ jobs:
             const chanRes = await fetch(`https://api.streamelements.com/kappa/v2/channels/${CHANNEL}`);
             const chan = await chanRes.json();
             const channelId = chan._id;
-            console.log('ID', channelId);
+            console.log('ChannelID', channelId);
 
-            // 1. Busca subs ATIVOS via endpoint oficial de subscribers
-            console.log('Buscando subs ativos...');
-            let subsAtivos = [];
+            // Carrega memória antiga (para não perder histórico)
+            let memory = { users: {}, processedIds: [] };
+            if(fs.existsSync('data/subs.json')){
+              try{ memory = JSON.parse(fs.readFileSync('data/subs.json','utf8')); }catch(e){}
+            }
+            if(!memory.users) memory.users = {};
+            if(!memory.processedIds) memory.processedIds = [];
+            const processedSet = new Set(memory.processedIds);
+
+            // Busca atividades (últimas 1000)
+            let allActs = [];
+            for(let off=0; off<1000; off+=100){
+              const r = await fetch(`https://api.streamelements.com/kappa/v2/activities/${channelId}?limit=100&offset=${off}`, {
+                headers:{ Authorization: `Bearer ${JWT}` }
+              });
+              if(!r.ok){ console.log('activities status', r.status); break; }
+              const acts = await r.json();
+              if(!acts || acts.length===0) break;
+              allActs = allActs.concat(acts);
+              if(acts.length<100) break;
+            }
+            console.log(`Total activities lidas: ${allActs.length}`);
+
+            // Tenta também endpoint de subscribers (se tiver permissão)
             try{
               const subRes = await fetch(`https://api.streamelements.com/kappa/v2/subscribers/${channelId}`, {
                 headers:{ Authorization: `Bearer ${JWT}` }
               });
-              const text = await subRes.text();
-              console.log('Subscribers response status', subRes.status);
-              console.log('Subscribers raw', text.slice(0,1000));
               if(subRes.ok){
-                const data = JSON.parse(text);
-                // Pode vir como array ou objeto com subscribers
-                if(Array.isArray(data)) subsAtivos = data;
-                else if(data.subscribers) subsAtivos = data.subscribers;
-                else if(data.docs) subsAtivos = data.docs;
-                else subsAtivos = data;
-              }
-            }catch(e){ console.log('Erro subs', e); }
-
-            // 2. Fallback: se endpoint de subscribers não retornar, usa activities recentes (últimos 35 dias = sub ativo)
-            if(!subsAtivos || subsAtivos.length===0){
-              console.log('Subscribers vazio, usando fallback de activities recentes (30 dias)...');
-              let allActs=[];
-              for(let off=0; off<1000; off+=100){
-                const r = await fetch(`https://api.streamelements.com/kappa/v2/activities/${channelId}?limit=100&offset=${off}`, {
-                  headers:{ Authorization: `Bearer ${JWT}` }
+                const data = await subRes.json();
+                console.log('Subscribers endpoint OK', JSON.stringify(data).slice(0,500));
+                const list = Array.isArray(data) ? data : (data.subscribers||data.docs||[]);
+                list.forEach(s=>{
+                  const uname = s.username||s.name;
+                  if(!uname) return;
+                  const key = uname.toLowerCase();
+                  const meses = parseInt(s.totalMonths||s.amount||s.months||1)||1;
+                  if(!memory.users[key]) memory.users[key] = { username: uname, totalMeses: 0, lastSub: null, firstSub: null };
+                  memory.users[key].username = uname;
+                  memory.users[key].totalMeses = Math.max(memory.users[key].totalMeses, meses);
+                  if(!memory.users[key].lastSub) memory.users[key].lastSub = new Date().toISOString();
                 });
-                if(!r.ok) break;
-                const acts = await r.json();
-                if(!acts || acts.length===0) break;
-                allActs = allActs.concat(acts);
-                if(acts.length<100) break;
               }
-              // Filtra só subs dos últimos 35 dias (tempo de um sub)
-              const limite = new Date(); limite.setDate(limite.getDate()-35);
-              const recentes = {};
-              allActs.forEach(act=>{
-                const date = new Date(act.createdAt || act.created_at || 0);
-                if(date < limite) return;
-                const t = (act.type||'').toLowerCase();
-                const dt = (act.data?.type||'').toLowerCase();
-                if(t.includes('sub') || dt.includes('sub') || t.includes('gift')){
-                  let user = act.data?.username || act.data?.sender || act.username;
-                  if(!user) return;
-                  const key = user.toLowerCase();
-                  let meses = 1;
-                  // tenta pegar quantidade de meses se tiver
-                  if(act.data?.amount) meses = parseInt(act.data.amount)||1;
-                  if(act.data?.tier) meses = parseInt(act.data.tier)||meses;
-                  // guarda maior
-                  if(!recentes[key] || recentes[key].meses < meses){
-                    recentes[key] = { username: user, meses: meses, last: date };
-                  }
+            }catch(e){ console.log('subscribers endpoint erro', e.message); }
+
+            // Processa activities novas
+            let novos = 0;
+            allActs.forEach(act=>{
+              const id = act._id||act.id;
+              if(id && processedSet.has(id)) return; // já processado antes
+              
+              const type = (act.type||'').toLowerCase();
+              const dataType = (act.data?.type||'').toLowerCase();
+              const isSub = type.includes('sub') || dataType.includes('sub') || type.includes('gift');
+              if(!isSub) return;
+
+              let username = act.data?.username || act.data?.recipient || act.username;
+              // gifted sub tem recipient
+              if(act.data?.recipient) username = act.data.recipient;
+              if(!username) return;
+              
+              const key = username.toLowerCase();
+              const created = act.createdAt || act.created_at || new Date().toISOString();
+              let qtd = 1;
+              if(act.data?.amount) qtd = parseInt(act.data.amount)||1;
+              // Tier 1,2,3 não é meses, é nivel, então ignora tier como meses
+
+              if(!memory.users[key]){
+                memory.users[key] = { username: username, totalMeses: 0, firstSub: created, lastSub: created, gifts: 0 };
+              }
+              // Só incrementa se for atividade nova
+              if(id) processedSet.add(id);
+              
+              // Atualiza datas
+              if(!memory.users[key].firstSub) memory.users[key].firstSub = created;
+              memory.users[key].lastSub = new Date(Math.max(new Date(memory.users[key].lastSub||0), new Date(created))).toISOString();
+              memory.users[key].username = username; // mantém casing mais recente
+
+              // Lógica de meses: se for resub, o amount já é o total de meses? Na SE, amount = meses totais no resub
+              // Então pegamos o maior entre o que temos e o amount
+              if(act.data?.type === 'resub' || type === 'resub'){
+                const totalNoEvento = parseInt(act.data?.amount)||0;
+                if(totalNoEvento>0){
+                  memory.users[key].totalMeses = Math.max(memory.users[key].totalMeses, totalNoEvento);
+                } else {
+                  memory.users[key].totalMeses += qtd;
                 }
-              });
-              subsAtivos = Object.values(recentes).map(r=>({ username: r.username, amount: r.meses, totalMonths: r.meses }));
-              console.log('Recentes encontrados', subsAtivos);
+              } else if(type.includes('sub') || dataType.includes('sub')){
+                // sub novo ou gift
+                const totalNoEvento = parseInt(act.data?.amount)||0;
+                if(totalNoEvento>1 && totalNoEvento>memory.users[key].totalMeses){
+                  memory.users[key].totalMeses = totalNoEvento;
+                } else {
+                  // incrementa 1 se ainda não tinha contado essa atividade
+                  if(memory.users[key].totalMeses===0) memory.users[key].totalMeses = qtd;
+                  else if(!processedSet.has(id+'_counted')) {
+                    // evita contar duplicado, só conta se for resub depois de um tempo
+                    // Para simplificar, se lastSub anterior > 30 dias atrás, conta +1
+                    // Se não, mantém
+                  }
+                  if(memory.users[key].totalMeses===0) memory.users[key].totalMeses=1;
+                }
+              }
+              novos++;
+            });
+
+            console.log(`Novas atividades de sub processadas: ${novos}`);
+            
+            // Garante pelo menos 1 mês para quem tem registro
+            Object.values(memory.users).forEach(u=>{
+              if(u.totalMeses===0) u.totalMeses=1;
+            });
+
+            // Salva memória atualizada (mantém só últimos 5000 ids para não crescer infinito)
+            memory.processedIds = Array.from(processedSet).slice(-5000);
+            fs.writeFileSync('data/subs.json', JSON.stringify(memory, null, 2));
+            console.log('Memory salva:', Object.keys(memory.users).length, 'usuarios');
+
+            // Determina quem é ATIVO (sub nos últimos 45 dias)
+            // Twitch renova todo mês, então se último sub foi há menos de 45 dias, está ativo
+            const agora = new Date();
+            const limiteAtivo = new Date(); limiteAtivo.setDate(agora.getDate()-45);
+
+            const ativos = Object.values(memory.users).filter(u=>{
+              if(!u.lastSub) return false;
+              const last = new Date(u.lastSub);
+              return last >= limiteAtivo;
+            });
+
+            console.log(`Ativos (últimos 45 dias): ${ativos.length}`, ativos.map(a=>a.username));
+
+            // Se ninguém ativo mas temos histórico, mostra os 3 mais recentes como fallback para não ficar vazio
+            let listaFinal = ativos;
+            if(listaFinal.length===0 && Object.keys(memory.users).length>0){
+              console.log('Nenhum ativo nos 45 dias, usando 5 mais recentes como fallback');
+              listaFinal = Object.values(memory.users)
+                .sort((a,b)=> new Date(b.lastSub)-new Date(a.lastSub))
+                .slice(0,5);
             }
 
-            // 3. Busca pontos
-            const topRes = await fetch(`https://api.streamelements.com/kappa/v2/points/${channelId}/top?limit=200`, {
-              headers:{ Authorization: `Bearer ${JWT}` }
-            });
-            const topData = await topRes.json().catch(()=>({users:[]}));
-            const topUsers = topData.users || topData || [];
-            const pontosMap={};
-            topUsers.forEach(u=>{ if(u.username) pontosMap[u.username.toLowerCase()] = u.points||0; });
+            // Busca pontos
+            let pontosMap = {};
+            try{
+              const topRes = await fetch(`https://api.streamelements.com/kappa/v2/points/${channelId}/top?limit=200`, {
+                headers:{ Authorization: `Bearer ${JWT}` }
+              });
+              const topData = await topRes.json().catch(()=>({users:[]}));
+              const topUsers = topData.users||topData||[];
+              topUsers.forEach(u=>{ if(u.username) pontosMap[u.username.toLowerCase()] = u.points||0; });
+            }catch(e){}
 
-            // 4. Monta lista final SÓ com subs ativos
-            const lista=[];
-            subsAtivos.forEach(s=>{
-              const uname = s.username || s.name || s.user || '';
-              if(!uname) return;
-              const key = uname.toLowerCase();
-              // tenta achar meses em vários campos possíveis
-              let meses = s.totalMonths || s.amount || s.months || s.cumulativeMonths || s.count || 1;
-              meses = parseInt(meses)||1;
-              const pts = pontosMap[key]||0;
-              lista.push({ username: uname, meses: meses, patinhas: pts });
-            });
+            // Monta array final para o painel
+            const finalArray = listaFinal
+              .map(u=>({
+                username: u.username,
+                meses: u.totalMeses||1,
+                patinhas: pontosMap[u.username.toLowerCase()]||0,
+                lastSub: u.lastSub
+              }))
+              .sort((a,b)=> b.meses-b.meses || b.patinhas-a.patinhas)
+              .slice(0,30);
 
-            // Remove duplicatas (mantém maior meses)
-            const uniq={};
-            lista.forEach(u=>{
-              const k=u.username.toLowerCase();
-              if(!uniq[k] || uniq[k].meses < u.meses) uniq[k]=u;
-            });
-            let final = Object.values(uniq).sort((a,b)=> b.meses-b.meses || b.patinhas-a.patinhas).slice(0,30);
+            console.log('Final para index.html:', finalArray);
 
-            console.log('FINAL - Só subs ativos:', final);
-
+            // Escreve no index.html
             let html = fs.readFileSync('index.html','utf8');
-            const arrayStr = final.map(u=>`  { username: "${u.username}", meses: ${u.meses}, patinhas: ${u.patinhas} }`).join(',\n');
-            html = html.replace(/const APOIADORES = \[([\s\S]*?)\];/, `const APOIADORES = [\n${arrayStr}\n];`);
+            const arrayStr = finalArray.map(u=>`  { username: "${u.username}", meses: ${u.meses}, patinhas: ${u.patinhas} }`).join(',\n');
+            const novo = `const APOIADORES = [\n${arrayStr}\n];`;
+            html = html.replace(/const APOIADORES = \[([\s\S]*?)\];/, novo);
             fs.writeFileSync('index.html', html);
-            console.log('index.html atualizado com SÓ subs ativos');
+            console.log('index.html atualizado automaticamente');
           }
-          run().catch(e=>{console.error(e); process.exit(1);});
+          run().catch(e=>{ console.error(e); process.exit(1); });
           JS
-      - run: npm install node-fetch@2
-      - run: node scripts/update.js
+          node scripts/update.js
         env:
           SE_JWT: ${{ secrets.SE_JWT }}
-      - name: Commit
+
+      - name: Commit automatico
         run: |
-          git config user.name "bot-patinha"
+          git config user.name "bot-patinha-auto"
           git config user.email "bot@miapatinhas.com"
-          git add index.html
-          git diff --staged --quiet || (git commit -m "atualiza só subs ativos [bot]" && git push)
+          git add index.html data/subs.json
+          git diff --staged --quiet || (git commit -m "auto: atualiza subs ativos e tempo [bot]" && git push)
