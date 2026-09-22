@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Apoiadores - miapatinhas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:transparent;color:#fff;display:flex;justify-content:center;padding:14px}
+.wrapper{width:420px}
+.header{text-align:center;margin-bottom:18px}
+.header h1{font-size:28px;font-weight:800;line-height:0.95;text-shadow:0 2px 10px rgba(0,0,0,0.8)}
+.line{height:4px;background:linear-gradient(90deg,#9d4edd,#ff006e,#00f5ff,#39ff14,#ff7b00);margin-top:10px;border-radius:10px}
+.card{background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.12);border-radius:14px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px)}
+.rank{width:36px;height:36px;border-radius:50%;background:#1e1e24;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.avatar{width:42px;height:42px;border-radius:50%;overflow:hidden;background:#222;flex-shrink:0;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.info{flex:1;min-width:0}
+.name{font-weight:800;font-size:14px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{margin-top:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.time{font-size:11px;color:#fff;background:rgba(0,0,0,0.5);padding:3px 8px;border-radius:6px;font-weight:700}
+.badge-rarity{display:inline-flex;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;text-transform:uppercase}
+.badge-comum{background:#3a3a3a;color:#aaa;border:1px solid #555}
+.badge-incomum{background:#2d4a22;color:#a8ff88;border:1px solid #6f9a3d}
+.badge-raro{background:#1a2f5a;color:#8fc3ff;border:1px solid #4a90e2}
+.badge-epico{background:linear-gradient(90deg,#4a1a6b,#7a2fbf);color:#e9d5ff;border:1px solid #a855f7}
+.badge-lendario{background:linear-gradient(90deg,#ff8c00,#ffb700);color:#000;border:1px solid #ffd700}
+.badge-mitico{background:linear-gradient(90deg,#00f5ff,#7a5cff);color:#fff;border:1px solid #00f5ff}
+.coins{margin-left:auto;text-align:right}
+.coins b{color:#ffdb4d;font-size:14px;display:block}
+.coins span{font-size:9px;color:#888}
+#status{font-size:11px;color:#aaa;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div class="header"><h1>APOIADORES DE<br>PATINHAS</h1><div class="line"></div></div>
+<div id="lista"></div>
+<div id="status">Carregando...</div>
+</div>
+<script>
+// ESSE ARRAY VAI SER SOBRESCRITO AUTOMATICAMENTE PELO ROBO COM SEU TOKEN
+// O robo conta quantos subs cada pessoa deu e atualiza aqui sozinho
+const APOIADORES = [
+  { username: "jarva571", meses: 0, patinhas: 0 },
+  { username: "miapatinhas", meses: 0, patinhas: 0 },
+];
+
+const TWITCH = "miapatinhas";
+function getRaridade(m){ if(m>=18)return{id:"mitico",label:"👽 MÍTICO"}; if(m>=12)return{id:"lendario",label:"🐲 LENDÁRIO"}; if(m>=6)return{id:"epico",label:"🧙‍♂️ MAGO"}; if(m>=3)return{id:"raro",label:"🦝 RARO"}; if(m>=1)return{id:"incomum",label:"🐸 INCOMUM"}; return{id:"comum",label:"🥔 COMUM"}; }
+function tempo(m){ if(m===0) return "Não é sub"; if(m===1) return "1 mês de sub"; return `${m} meses de sub`; }
+function avatar(u){ return `https://unavatar.io/twitch/${u.toLowerCase()}`; }
+function render(lista){
+  const el=document.getElementById('lista'); el.innerHTML="";
+  lista.forEach((it,i)=>{
+    const rar=getRaridade(it.meses); const ini=it.username.slice(0,2).toUpperCase();
+    const d=document.createElement('div'); d.className='card '+rar.id;
+    d.innerHTML=`<div class="rank">${i+1}</div><div class="avatar"><img src="${avatar(it.username)}" onerror="this.style.display='none';this.parentElement.innerHTML='${ini}'"></div><div class="info"><div class="name">${it.username}</div><div class="meta"><span class="badge-rarity badge-${rar.id}">${rar.label}</span><span class="time">${tempo(it.meses)}</span></div></div><div class="coins"><b>${it.patinhas.toLocaleString('pt-BR')} 🪙</b><span>PATINHAS</span></div>`;
+    el.appendChild(d);
+  });
+  document.getElementById('status').innerText=`Automático • ${lista.length} apoiadores`;
+}
+async function load(){
+  try{
+    const ch=await (await fetch(`https://api.streamelements.com/kappa/v2/channels/${TWITCH}`)).json();
+    const top=await (await fetch(`https://api.streamelements.com/kappa/v2/points/${ch._id}/top?limit=100`)).json();
+    const users=top.users||top;
+    const map={}; users.forEach(u=>map[u.username.toLowerCase()]=u.points);
+    let lista=APOIADORES.map(v=>({username:v.username, meses:v.meses, patinhas: map[v.username.toLowerCase()] || v.patinhas || 0})).filter(v=>v.meses>0||v.patinhas>0).sort((a,b)=>b.meses-b.meses||b.patinhas-a.patinhas);
+    // se o robo já preencheu, usa direto
+    if(lista.length>0){ render(lista); return; }
+    // fallback: mostra quem tem pontos
+    const todos=Array.from(new Set([...Object.keys(map), ...APOIADORES.map(a=>a.username.toLowerCase())])).map(k=>{ const orig=users.find(u=>u.username.toLowerCase()===k); return {username: orig?orig.username:k, meses: APOIADORES.find(a=>a.username.toLowerCase()===k)?.meses||0, patinhas: map[k]||0}}).filter(v=>v.meses>0||v.patinhas>100).sort((a,b)=>b.meses-b.meses||b.patinhas-a.patinhas).slice(0,25);
+    render(todos);
+  }catch(e){ render(APOIADORES.map(v=>({...v,patinhas:0}))); }
+}
+load();
+</script>
+</body>
+</html>
