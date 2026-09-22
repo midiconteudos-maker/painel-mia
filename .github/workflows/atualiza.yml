@@ -1,0 +1,149 @@
+name: Atualiza Subs Ativos
+
+on:
+  schedule:
+    - cron: '0 */3 * * *' # a cada 3 horas
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Script - Só subs ATIVOS
+        run: |
+          mkdir -p scripts
+          cat > scripts/update.js << 'JS'
+          const fetch = require('node-fetch');
+          const fs = require('fs');
+          const CHANNEL = 'miapatinhas';
+          const JWT = process.env.SE_JWT;
+          if(!JWT){ console.log('Sem JWT'); process.exit(1); }
+
+          async function run(){
+            console.log('Buscando channel...');
+            const chanRes = await fetch(`https://api.streamelements.com/kappa/v2/channels/${CHANNEL}`);
+            const chan = await chanRes.json();
+            const channelId = chan._id;
+            console.log('ID', channelId);
+
+            // 1. Busca subs ATIVOS via endpoint oficial de subscribers
+            console.log('Buscando subs ativos...');
+            let subsAtivos = [];
+            try{
+              const subRes = await fetch(`https://api.streamelements.com/kappa/v2/subscribers/${channelId}`, {
+                headers:{ Authorization: `Bearer ${JWT}` }
+              });
+              const text = await subRes.text();
+              console.log('Subscribers response status', subRes.status);
+              console.log('Subscribers raw', text.slice(0,1000));
+              if(subRes.ok){
+                const data = JSON.parse(text);
+                // Pode vir como array ou objeto com subscribers
+                if(Array.isArray(data)) subsAtivos = data;
+                else if(data.subscribers) subsAtivos = data.subscribers;
+                else if(data.docs) subsAtivos = data.docs;
+                else subsAtivos = data;
+              }
+            }catch(e){ console.log('Erro subs', e); }
+
+            // 2. Fallback: se endpoint de subscribers não retornar, usa activities recentes (últimos 35 dias = sub ativo)
+            if(!subsAtivos || subsAtivos.length===0){
+              console.log('Subscribers vazio, usando fallback de activities recentes (30 dias)...');
+              let allActs=[];
+              for(let off=0; off<1000; off+=100){
+                const r = await fetch(`https://api.streamelements.com/kappa/v2/activities/${channelId}?limit=100&offset=${off}`, {
+                  headers:{ Authorization: `Bearer ${JWT}` }
+                });
+                if(!r.ok) break;
+                const acts = await r.json();
+                if(!acts || acts.length===0) break;
+                allActs = allActs.concat(acts);
+                if(acts.length<100) break;
+              }
+              // Filtra só subs dos últimos 35 dias (tempo de um sub)
+              const limite = new Date(); limite.setDate(limite.getDate()-35);
+              const recentes = {};
+              allActs.forEach(act=>{
+                const date = new Date(act.createdAt || act.created_at || 0);
+                if(date < limite) return;
+                const t = (act.type||'').toLowerCase();
+                const dt = (act.data?.type||'').toLowerCase();
+                if(t.includes('sub') || dt.includes('sub') || t.includes('gift')){
+                  let user = act.data?.username || act.data?.sender || act.username;
+                  if(!user) return;
+                  const key = user.toLowerCase();
+                  let meses = 1;
+                  // tenta pegar quantidade de meses se tiver
+                  if(act.data?.amount) meses = parseInt(act.data.amount)||1;
+                  if(act.data?.tier) meses = parseInt(act.data.tier)||meses;
+                  // guarda maior
+                  if(!recentes[key] || recentes[key].meses < meses){
+                    recentes[key] = { username: user, meses: meses, last: date };
+                  }
+                }
+              });
+              subsAtivos = Object.values(recentes).map(r=>({ username: r.username, amount: r.meses, totalMonths: r.meses }));
+              console.log('Recentes encontrados', subsAtivos);
+            }
+
+            // 3. Busca pontos
+            const topRes = await fetch(`https://api.streamelements.com/kappa/v2/points/${channelId}/top?limit=200`, {
+              headers:{ Authorization: `Bearer ${JWT}` }
+            });
+            const topData = await topRes.json().catch(()=>({users:[]}));
+            const topUsers = topData.users || topData || [];
+            const pontosMap={};
+            topUsers.forEach(u=>{ if(u.username) pontosMap[u.username.toLowerCase()] = u.points||0; });
+
+            // 4. Monta lista final SÓ com subs ativos
+            const lista=[];
+            subsAtivos.forEach(s=>{
+              const uname = s.username || s.name || s.user || '';
+              if(!uname) return;
+              const key = uname.toLowerCase();
+              // tenta achar meses em vários campos possíveis
+              let meses = s.totalMonths || s.amount || s.months || s.cumulativeMonths || s.count || 1;
+              meses = parseInt(meses)||1;
+              const pts = pontosMap[key]||0;
+              lista.push({ username: uname, meses: meses, patinhas: pts });
+            });
+
+            // Remove duplicatas (mantém maior meses)
+            const uniq={};
+            lista.forEach(u=>{
+              const k=u.username.toLowerCase();
+              if(!uniq[k] || uniq[k].meses < u.meses) uniq[k]=u;
+            });
+            let final = Object.values(uniq).sort((a,b)=> b.meses-b.meses || b.patinhas-a.patinhas).slice(0,30);
+
+            console.log('FINAL - Só subs ativos:', final);
+
+            let html = fs.readFileSync('index.html','utf8');
+            const arrayStr = final.map(u=>`  { username: "${u.username}", meses: ${u.meses}, patinhas: ${u.patinhas} }`).join(',\n');
+            html = html.replace(/const APOIADORES = \[([\s\S]*?)\];/, `const APOIADORES = [\n${arrayStr}\n];`);
+            fs.writeFileSync('index.html', html);
+            console.log('index.html atualizado com SÓ subs ativos');
+          }
+          run().catch(e=>{console.error(e); process.exit(1);});
+          JS
+      - run: npm install node-fetch@2
+      - run: node scripts/update.js
+        env:
+          SE_JWT: ${{ secrets.SE_JWT }}
+      - name: Commit
+        run: |
+          git config user.name "bot-patinha"
+          git config user.email "bot@miapatinhas.com"
+          git add index.html
+          git diff --staged --quiet || (git commit -m "atualiza só subs ativos [bot]" && git push)
