@@ -1,81 +1,164 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel Apoiadores - miapatinhas</title>
+<title>Apoiadores - Selecionado por Raridade</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:transparent;color:#fff;display:flex;justify-content:center;padding:14px}
-.wrapper{width:430px}
+.wrapper{width:420px}
 .header{text-align:center;margin-bottom:18px}
 .header h1{font-size:28px;font-weight:800;line-height:0.95;text-shadow:0 2px 10px rgba(0,0,0,0.8)}
 .line{height:4px;background:linear-gradient(90deg,#9d4edd,#ff006e,#00f5ff,#39ff14,#ff7b00);margin-top:10px;border-radius:10px}
-.card{background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.12);border-radius:14px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px)}
-.rank{width:36px;height:36px;border-radius:50%;background:#1e1e24;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
-.avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;background:#222;flex-shrink:0;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:12px}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.info{flex:1;min-width:0}
-.name{font-weight:800;font-size:14px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.meta{margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.time{font-size:11px;color:#fff;background:rgba(0,0,0,0.55);padding:4px 8px;border-radius:6px;font-weight:700}
-.badge-rarity{display:inline-flex;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;text-transform:uppercase}
-.badge-incomum{background:#2d4a22;color:#a8ff88;border:1px solid #6f9a3d}
-.badge-raro{background:#1a2f5a;color:#8fc3ff;border:1px solid #4a90e2}
-.badge-epico{background:linear-gradient(90deg,#4a1a6b,#7a2fbf);color:#e9d5ff;border:1px solid #a855f7}
-.badge-lendario{background:linear-gradient(90deg,#ff8c00,#ffb700);color:#000;border:1px solid #ffd700}
-.badge-mitico{background:linear-gradient(90deg,#00f5ff,#7a5cff);color:#fff;border:1px solid #00f5ff}
-.coins{margin-left:auto;text-align:right;min-width:90px}
-.coins b{color:#ffdb4d;font-size:14px;display:block}
+.card{
+  background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.12);border-radius:14px;
+  padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px;
+  backdrop-filter:blur(10px);position:relative;overflow:hidden;
+  transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;
+}
+.card::after{
+  content:'';position:absolute;top:0;left:-150%;width:70%;height:100%;
+  background:linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.08) 70%, transparent 100%);
+  transform:skewX(-18deg);pointer-events:none;opacity:0
+}
+.card:hover::after{opacity:1;animation:espelhado 0.85s ease-out forwards}
+@keyframes espelhado{0%{left:-150%}100%{left:150%}}
+
+/* SELECIONADO COM COR DA RARIDADE */
+.card.comum:hover{border-color:#888;background:linear-gradient(135deg, rgba(136,136,136,0.18), rgba(255,255,255,0.08));box-shadow:0 0 0 2px rgba(136,136,136,0.5), 0 0 20px rgba(136,136,136,0.3)}
+.card.comum:hover .rank{background:#555;color:#fff}
+
+.card.incomum{border-color:rgba(111,154,61,0.3)}
+.card.incomum:hover{border-color:#6f9a3d;background:linear-gradient(135deg, rgba(111,154,61,0.2), rgba(168,255,136,0.08));box-shadow:0 0 0 2px #6f9a3d, 0 0 25px rgba(111,154,61,0.5)}
+.card.incomum:hover .rank{background:#6f9a3d;color:#fff;box-shadow:0 0 12px rgba(111,154,61,0.8)}
+.card.incomum:hover .avatar{border-color:#6f9a3d}
+
+.card.raro{border-color:rgba(74,144,226,0.3)}
+.card.raro:hover{border-color:#4a90e2;background:linear-gradient(135deg, rgba(74,144,226,0.2), rgba(143,195,255,0.08));box-shadow:0 0 0 2px #4a90e2, 0 0 25px rgba(74,144,226,0.6)}
+.card.raro:hover .rank{background:#4a90e2;color:#fff;box-shadow:0 0 12px rgba(74,144,226,0.8)}
+.card.raro:hover .avatar{border-color:#4a90e2}
+
+.card.epico{border-color:rgba(168,85,247,0.4)}
+.card.epico:hover{border-color:#a855f7;background:linear-gradient(135deg, rgba(168,85,247,0.22), rgba(233,213,255,0.1));box-shadow:0 0 0 2px #a855f7, 0 0 30px rgba(168,85,247,0.6)}
+.card.epico:hover .rank{background:#a855f7;color:#fff;box-shadow:0 0 15px rgba(168,85,247,0.9)}
+.card.epico:hover .avatar{border-color:#a855f7}
+
+.card.lendario{border-color:rgba(255,215,0,0.35);background:rgba(255,215,0,0.05)}
+.card.lendario:hover{border-color:#ffd700;background:linear-gradient(135deg, rgba(255,215,0,0.22), rgba(255,183,0,0.1));box-shadow:0 0 0 2px #ffd700, 0 0 35px rgba(255,215,0,0.7)}
+.card.lendario:hover .rank{background:#ffd700;color:#000;box-shadow:0 0 15px rgba(255,215,0,0.9)}
+.card.lendario:hover .avatar{border-color:#ffd700}
+
+.card.mitico{border-color:rgba(0,245,255,0.4);background:rgba(0,245,255,0.06)}
+.card.mitico:hover{border-color:#00f5ff;background:linear-gradient(135deg, rgba(0,245,255,0.2), rgba(122,92,255,0.15));box-shadow:0 0 0 2px #00f5ff, 0 0 40px rgba(0,245,255,0.7)}
+.card.mitico:hover .rank{background:#00f5ff;color:#000;box-shadow:0 0 18px rgba(0,245,255,1)}
+.card.mitico:hover .avatar{border-color:#00f5ff}
+
+.card:hover{transform:scale(1.03) translateX(4px)}
+
+.bichinho-fundo{
+  position:absolute;right:14%;top:50%;transform:translateY(-50%);
+  font-size:68px;opacity:0.04;pointer-events:none;z-index:0;
+  filter:blur(0.5px);transition:all 0.4s ease;
+}
+.card:hover .bichinho-fundo{opacity:0.09;transform:translateY(-50%) scale(1.18)}
+.bichinho-fundo.mitico{animation:flutuar 3s ease-in-out infinite}
+@keyframes flutuar{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-56%)}}
+
+.rank{width:36px;height:36px;border-radius:50%;background:#1e1e24;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;z-index:2;transition:all 0.25s ease}
+.avatar{width:42px;height:42px;border-radius:50%;overflow:hidden;background:#222;flex-shrink:0;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;z-index:2;transition:all 0.25s ease}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.info{flex:1;min-width:0;z-index:2}
+.name{font-weight:800;font-size:14px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:all 0.25s ease}
+.card:hover .name{letter-spacing:0.3px}
+.meta{margin-top:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.time{font-size:11px;color:#fff;background:rgba(0,0,0,0.5);padding:3px 8px;border-radius:6px;font-weight:700;z-index:2}
+.badge-rarity{display:inline-flex;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;text-transform:uppercase;z-index:2;transition:all 0.2s ease}
+.card:hover .badge-rarity{transform:scale(1.05)}
+.badge-comum{background:#3a3a3a;color:#aaa;border:1px solid #555}
+.badge-incomum{background:#2d4a22;color:#a8ff88;border:1px solid #6f9a3d;box-shadow:0 0 8px rgba(111,154,61,0.4)}
+.badge-raro{background:#1a2f5a;color:#8fc3ff;border:1px solid #4a90e2;box-shadow:0 0 10px rgba(74,144,226,0.4)}
+.badge-epico{background:linear-gradient(90deg,#4a1a6b,#7a2fbf);color:#e9d5ff;border:1px solid #a855f7;box-shadow:0 0 14px rgba(157,78,221,0.5);animation:pulse 1.8s infinite}
+.badge-lendario{background:linear-gradient(90deg,#ff8c00,#ffb700);color:#000;border:1px solid #ffd700;box-shadow:0 0 16px rgba(255,183,0,0.7);animation:pulse2 1.5s infinite}
+.badge-mitico{background:linear-gradient(90deg,#00f5ff,#7a5cff);color:#fff;border:1px solid #00f5ff;box-shadow:0 0 18px rgba(0,245,255,0.8);animation:rainbow 2s linear infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 14px rgba(157,78,221,0.5)}50%{box-shadow:0 0 22px rgba(157,78,221,0.9)}}
+@keyframes pulse2{0%,100%{box-shadow:0 0 16px rgba(255,183,0,0.7)}50%{box-shadow:0 0 26px rgba(255,183,0,1)}}
+@keyframes rainbow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.coins{margin-left:auto;text-align:right;z-index:2}
+.coins b{color:#ffdb4d;font-size:14px;display:block;transition:all 0.25s ease}
+.card:hover .coins b{color:#fff176;text-shadow:0 0 10px rgba(255,219,77,0.8)}
 .coins span{font-size:9px;color:#888}
-#status{font-size:11px;color:rgba(255,255,255,0.35);text-align:center;margin-top:14px}
-.empty{text-align:center;color:#777;font-size:13px;margin-top:30px;background:rgba(255,255,255,0.05);padding:20px;border-radius:12px}
 </style>
 </head>
 <body>
 <div class="wrapper">
 <div class="header"><h1>APOIADORES DE<br>PATINHAS</h1><div class="line"></div></div>
 <div id="lista"></div>
-<div id="status"></div>
 </div>
 <script>
-// ATUALIZADO AUTOMATICAMENTE PELO ROBÔ - NÃO PRECISA EDITAR NA MÃO
-const APOIADORES = [
-
-];
-
-const TWITCH = "miapatinhas";
-function getRaridade(m){ if(m>=18)return{id:"mitico",label:"👽 MÍTICO"}; if(m>=12)return{id:"lendario",label:"🐲 LENDÁRIO"}; if(m>=6)return{id:"epico",label:"🧙‍♂️ MAGO"}; if(m>=3)return{id:"raro",label:"🦝 RARO"}; if(m>=1)return{id:"incomum",label:"🐸 INCOMUM"}; return{id:"comum",label:"🥔 COMUM"}; }
-function tempo(m){ if(m===1) return "1 mês de sub"; return `${m} meses de sub`; }
-function avatarUrl(u){ return `https://unavatar.io/twitch/${u.toLowerCase()}`; }
-async function render(){
-  const el=document.getElementById('lista'); el.innerHTML="";
-  // SÓ SUBS ATIVOS (meses > 0) - SEM TEXTO DE INSTRUÇÃO
-  const ativos = APOIADORES.filter(p=>p.meses>0);
-  if(ativos.length===0){
-    el.innerHTML=`<div class="empty">Nenhum sub ativo</div>`;
-    return;
-  }
-  let pontosMap={};
-  try{
-    const ch=await (await fetch(`https://api.streamelements.com/kappa/v2/channels/${TWITCH}`)).json();
-    const top=await (await fetch(`https://api.streamelements.com/kappa/v2/points/${ch._id}/top?limit=200`)).json();
-    const users=top.users||top;
-    users.forEach(u=>{ if(u.username) pontosMap[u.username.toLowerCase()]=u.points||0; });
-  }catch(e){}
-  ativos.sort((a,b)=> b.meses-b.meses);
-  ativos.forEach((it,i)=>{
-    const rar=getRaridade(it.meses);
-    const ini=it.username.slice(0,2).toUpperCase();
-    const patinhas=pontosMap[it.username.toLowerCase()] ?? it.patinhas ?? 0;
-    const d=document.createElement('div'); d.className='card';
-    d.innerHTML=`<div class="rank">${i+1}</div><div class="avatar"><img src="${avatarUrl(it.username)}" onerror="this.style.display='none';this.parentElement.textContent='${ini}'"></div><div class="info"><div class="name">${it.username}</div><div class="meta"><span class="badge-rarity badge-${rar.id}">${rar.label}</span><span class="time">⭐ ${tempo(it.meses)}</span></div></div><div class="coins"><b>${patinhas.toLocaleString('pt-BR')} 🪙</b><span>PATINHAS</span></div>`;
-    el.appendChild(d);
-  });
-  document.getElementById('status').innerText=`${ativos.length} sub(s) ativo(s)`;
+const CONFIG = { twitchUsername: "miapatinhas" };
+function getRaridade(meses){
+  if(meses>=18) return {id:"mitico", label:"👽 MÍTICO", bicho:"👽"};
+  if(meses>=12) return {id:"lendario", label:"🐲 LENDÁRIO", bicho:"🐲"};
+  if(meses>=6)  return {id:"epico", label:"🧙‍♂️ MAGO", bicho:"🧙‍♂️"};
+  if(meses>=3)  return {id:"raro", label:"🦝 RARO", bicho:"🦝"};
+  if(meses>=1)  return {id:"incomum", label:"🐸 INCOMUM", bicho:"🐸"};
+  return {id:"comum", label:"🥔 COMUM", bicho:"🥔"};
 }
-render();
+function formatarTempo(meses){ if(meses===0) return "Não é sub"; if(meses===1) return "1 mês de sub"; return `${meses} meses de sub`; }
+function getAvatarUrl(username){ return `https://unavatar.io/twitch/${username.toLowerCase()}`; }
+function render(lista){
+  const el = document.getElementById('lista'); el.innerHTML = "";
+  lista.forEach((item,i)=>{
+    const rar = getRaridade(item.meses); const avatarUrl = getAvatarUrl(item.username); const iniciais = item.username.substring(0,2).toUpperCase();
+    const div = document.createElement('div'); div.className = 'card ' + rar.id;
+    div.innerHTML = `
+      <div class="bichinho-fundo ${rar.id}">${rar.bicho}</div>
+      <div class="rank">${i+1}</div>
+      <div class="avatar"><img src="${avatarUrl}" alt="${item.username}" onerror="this.style.display='none'; this.parentElement.innerHTML='${iniciais}'" onload="this.style.display='block'"></div>
+      <div class="info">
+        <div class="name">${item.username}</div>
+        <div class="meta"><span class="badge-rarity badge-${rar.id}">${rar.label}</span><span class="time">${formatarTempo(item.meses)}</span></div>
+      </div>
+      <div class="coins"><b>${item.patinhas.toLocaleString('pt-BR')} 🪙</b><span>PATINHAS</span></div>
+    `;
+    el.appendChild(div);
+  });
+}
+async function buscarReal(){
+  try{
+    // Tenta buscar dados gerados pelo robô automático (GitHub Actions)
+    const res = await fetch('./data/subs.json?v=' + Date.now());
+    if(res.ok){
+      const data = await res.json();
+      // data pode ser {users:{username:{username,totalMeses,patinhas}}} ou array
+      let lista = [];
+      if(Array.isArray(data)){
+        lista = data;
+      } else if(data.users){
+        lista = Object.values(data.users).map(u=>({ username: u.username, meses: u.totalMeses||u.meses||0, patinhas: u.patinhas||0 }));
+      } else if(data.subs){
+        lista = data.subs;
+      }
+      if(lista.length>0){
+        lista = lista.sort((a,b)=> b.meses - a.meses || b.patinhas - a.patinhas);
+        render(lista);
+        return;
+      }
+    }
+  }catch(e){ console.log('sem data/subs.json, usando fallback', e); }
+  // FALLBACK: mostra as 3 que estão ativas agora
+  const fallback = [
+    { username: "N_OT_", patinhas: 0, meses: 9 },
+    { username: "JARVA571", patinhas: 0, meses: 7 },
+    { username: "RUIVAFPS", patinhas: 0, meses: 3 },
+  ].sort((a,b)=> b.meses - a.meses);
+  render(fallback);
+}
+buscarReal(); setInterval(buscarReal, 60000);
+
 </script>
 </body>
 </html>
