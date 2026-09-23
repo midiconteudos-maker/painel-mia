@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:transparent;color:#fff;display:flex;justify-content:center;padding:14px}
+body{background:#0b0b12;background: radial-gradient(1200px 600px at 50% -20%, #1a1033 0%, #0b0b12 60%, #07070a 100%);color:#fff;display:flex;justify-content:center;padding:14px;min-height:100vh}
 .wrapper{width:420px}
 .header{text-align:center;margin-bottom:18px}
 .header h1{font-size:28px;font-weight:800;line-height:0.95;text-shadow:0 2px 10px rgba(0,0,0,0.8)}
@@ -129,33 +129,27 @@ function render(lista){
 }
 async function buscarReal(){
   try{
-    // Tenta buscar dados gerados pelo robô automático (GitHub Actions)
     const res = await fetch('./data/subs.json?v=' + Date.now());
-    if(res.ok){
-      const data = await res.json();
-      // data pode ser {users:{username:{username,totalMeses,patinhas}}} ou array
-      let lista = [];
-      if(Array.isArray(data)){
-        lista = data;
-      } else if(data.users){
-        lista = Object.values(data.users).map(u=>({ username: u.username, meses: u.totalMeses||u.meses||0, patinhas: u.patinhas||0 }));
-      } else if(data.subs){
-        lista = data.subs;
-      }
-      if(lista.length>0){
-        lista = lista.sort((a,b)=> b.meses - a.meses || b.patinhas - a.patinhas);
-        render(lista);
-        return;
-      }
+    if(!res.ok) throw new Error('sem subs.json');
+    const data = await res.json();
+    let lista = [];
+    if(Array.isArray(data)){
+      lista = data;
+    } else if(data.users){
+      lista = Object.values(data.users).map(u=>({ username: u.username, meses: u.totalMeses||u.meses||0, patinhas: u.patinhas||0, tier: u.tier||1 }));
+    } else if(data.subs){
+      lista = data.subs;
     }
-  }catch(e){ console.log('sem data/subs.json, usando fallback', e); }
-  // FALLBACK: mostra as 3 que estão ativas agora
-  const fallback = [
-    { username: "N_OT_", patinhas: 0, meses: 9 },
-    { username: "JARVA571", patinhas: 0, meses: 7 },
-    { username: "RUIVAFPS", patinhas: 0, meses: 3 },
-  ].sort((a,b)=> b.meses - a.meses);
-  render(fallback);
+    // Remove filtro de 6, mostra TODOS
+    lista = lista.sort((a,b)=> b.meses - a.meses || b.patinhas - a.patinhas);
+    if(lista.length===0) throw new Error('lista vazia');
+    console.log(`Painel carregou ${lista.length} subs ativos de verdade`);
+    render(lista);
+    return;
+  }catch(e){
+    console.warn('Erro ao carregar data/subs.json, mostrando aviso', e);
+    document.getElementById('lista').innerHTML = `<div style="text-align:center;padding:30px;color:#ff6b6b;background:rgba(255,0,0,0.08);border:1px solid rgba(255,0,0,0.2);border-radius:12px">⚠️ Ainda buscando seus subs ativos...<br><br><small style="color:#aaa">Rode o workflow em Actions > Run workflow<br>Se continuar, seu SE_JWT expirou</small></div>`;
+  }
 }
 buscarReal(); setInterval(buscarReal, 60000);
 
