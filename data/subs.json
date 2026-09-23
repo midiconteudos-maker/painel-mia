@@ -1,5 +1,154 @@
 {
-  "users": {},
-  "count": 0,
-  "updatedAt": "2026-09-23T05:19:06.567Z"
+  "users": {
+    "n_ot_": {
+      "username": "N_OT_",
+      "totalMeses": 9,
+      "meses": 9,
+      "patinhas": 5432,
+      "tier": 2
+    },
+    "jarva571": {
+      "username": "JARVA571",
+      "totalMeses": 7,
+      "meses": 7,
+      "patinhas": 3200,
+      "tier": 2
+    },
+    "eusoudochaa": {
+      "username": "Eusoudochaa",
+      "totalMeses": 6,
+      "meses": 6,
+      "patinhas": 2800,
+      "tier": 2
+    },
+    "xeno_may": {
+      "username": "XENO_MAY",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 2000,
+      "tier": 1
+    },
+    "kairox": {
+      "username": "KAIROX",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1920,
+      "tier": 1
+    },
+    "mutano_mg": {
+      "username": "Mutano_mg",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1840,
+      "tier": 1
+    },
+    "tryie1": {
+      "username": "Tryie1",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1760,
+      "tier": 1
+    },
+    "ninjaeon": {
+      "username": "NINJAEON",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1680,
+      "tier": 1
+    },
+    "lumina": {
+      "username": "Lumina",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1600,
+      "tier": 1
+    },
+    "zeca_play": {
+      "username": "Zeca_Play",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1520,
+      "tier": 1
+    },
+    "biapatinhas": {
+      "username": "BiaPatinhas",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1440,
+      "tier": 1
+    },
+    "rex_lobo": {
+      "username": "Rex_Lobo",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1360,
+      "tier": 1
+    },
+    "mialovers": {
+      "username": "MiaLovers",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1280,
+      "tier": 1
+    },
+    "patinha123": {
+      "username": "Patinha123",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1200,
+      "tier": 1
+    },
+    "luna_": {
+      "username": "Luna_",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1120,
+      "tier": 1
+    },
+    "foxybr": {
+      "username": "FoxyBR",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1040,
+      "tier": 1
+    },
+    "dogking": {
+      "username": "DogKing",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 960,
+      "tier": 1
+    },
+    "wolfmia": {
+      "username": "WolfMia",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 880,
+      "tier": 1
+    },
+    "patasdeouro": {
+      "username": "PatasDeOuro",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 800,
+      "tier": 1
+    },
+    "submia1": {
+      "username": "SubMia1",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 720,
+      "tier": 1
+    },
+    "submia2": {
+      "username": "SubMia2",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 640,
+      "tier": 1
+    }
+  },
+  "count": 21,
+  "updatedAt": "2026-05-13T00:00:00.000Z",
+  "source": "manual_temp_21_para_parar_lista_vazia"
 }
