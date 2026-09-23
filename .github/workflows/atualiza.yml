@@ -19,78 +19,104 @@ jobs:
           cat > update.js << 'JS'
           const fetch = require('node-fetch');
           const fs = require('fs');
-          const CHANNEL = 'miapatinhas';
           const JWT = process.env.SE_JWT;
           (async()=>{
-            const cRes = await fetch(`https://api.streamelements.com/kappa/v2/channels/${CHANNEL}`);
-            const cJson = await cRes.json();
-            const id = cJson._id;
-            console.log('Channel ID', id);
+            // 1. Pega ID do canal pelo ME (usando JWT - mais confiavel)
+            let channelId = null;
+            try{
+              const meRes = await fetch('https://api.streamelements.com/kappa/v2/channels/me', {headers:{Authorization:`Bearer ${JWT}`}});
+              const meJson = await meRes.json();
+              console.log('ME response:', JSON.stringify(meJson).substring(0,500));
+              channelId = meJson._id || meJson._id || meJson.id;
+              console.log('Channel ID via /me:', channelId);
+            }catch(e){ console.log('Erro /me', e.message); }
+            // Fallback pelo nome
+            if(!channelId){
+              try{
+                const cRes = await fetch(`https://api.streamelements.com/kappa/v2/channels/miapatinhas`);
+                const cJson = await cRes.json();
+                channelId = cJson._id;
+                console.log('Channel ID via nome:', channelId);
+              }catch(e){}
+            }
+            if(!channelId){ console.log('Nao achou channelId, abort'); process.exit(1); }
 
-            // 1. Busca TODOS subs com paginação
+            // 2. Busca SUBS com paginacao
             let allSubs = [];
             let after = null;
-            let page = 0;
+            let tries = 0;
             do{
-              page++;
-              let url = `https://api.streamelements.com/kappa/v2/subscribers/${id}?limit=100`;
+              tries++;
+              let url = `https://api.streamelements.com/kappa/v2/subscribers/${channelId}?limit=100`;
               if(after) url += `&after=${after}`;
-              console.log(`Buscando subs pagina ${page}: ${url}`);
+              console.log(`Buscando subs pagina ${tries}: ${url}`);
               const sRes = await fetch(url, {headers:{Authorization:`Bearer ${JWT}`}});
+              const text = await sRes.text();
               if(!sRes.ok){
-                console.log('Erro subs', sRes.status, await sRes.text());
+                console.log(`Erro subs ${sRes.status} ${text.substring(0,300)}`);
+                // Tenta endpoint alternativo
+                if(sRes.status===404){
+                  console.log('Tentando endpoint alternativo /channels/:id/subscribers');
+                  const altRes = await fetch(`https://api.streamelements.com/kappa/v2/channels/${channelId}/subscribers`, {headers:{Authorization:`Bearer ${JWT}`}});
+                  console.log('Alt status', altRes.status);
+                  if(altRes.ok){
+                    const altJson = await altRes.json();
+                    console.log('Alt json', JSON.stringify(altJson).substring(0,500));
+                    allSubs = altJson.docs || altJson || [];
+                    break;
+                  }
+                }
                 break;
               }
-              const sJson = await sRes.json();
-              const docs = sJson.docs || [];
-              console.log(`Pagina ${page} retornou ${docs.length} subs`);
-              allSubs = allSubs.concat(docs);
-              after = sJson._after || sJson.after || null;
-              if(!after || docs.length < 100) break;
-            }while(after);
-            console.log(`TOTAL SUBS ATIVOS ACHADOS: ${allSubs.length}`);
-            allSubs.forEach(s=> console.log(`- ${s.user?.username||s.username} | meses: ${s.totalMonths||s.amount} | tier: ${s.tier}`));
+              try{
+                const sJson = JSON.parse(text);
+                const docs = sJson.docs || sJson || [];
+                console.log(`Pagina ${tries} retornou ${Array.isArray(docs)?docs.length:0} subs`);
+                if(Array.isArray(docs)) allSubs = allSubs.concat(docs);
+                after = sJson._after || sJson.after || null;
+                if(!after || (Array.isArray(docs) && docs.length < 100)) break;
+              }catch(e){ console.log('Erro parse subs', e.message); break; }
+            }while(after && tries<20);
+            console.log(`TOTAL SUBS ATIVOS ACHADOS via API: ${allSubs.length}`);
 
-            // 2. Busca TODOS coins com paginação
-            let coins = {};
+            // 3. Busca COINS (21 usuarios que ja vimos)
+            let coinsMap = {};
+            let coinsList = [];
             let offset = 0;
-            let totalCoins = 0;
             do{
-              const pRes = await fetch(`https://api.streamelements.com/kappa/v2/points/${id}/top?limit=100&offset=${offset}`, {headers:{Authorization:`Bearer ${JWT}`}});
-              if(!pRes.ok) break;
+              const pRes = await fetch(`https://api.streamelements.com/kappa/v2/points/${channelId}/top?limit=100&offset=${offset}`, {headers:{Authorization:`Bearer ${JWT}`}});
+              if(!pRes.ok){ console.log('Erro coins', pRes.status); break; }
               const pJson = await pRes.json();
               const users = pJson.users || [];
-              users.forEach(u=>{ coins[u.username.toLowerCase()] = u.points; });
-              totalCoins += users.length;
-              console.log(`Coins pagina offset ${offset} -> ${users.length} usuarios (total ${totalCoins})`);
+              users.forEach(u=>{ coinsMap[u.username.toLowerCase()] = u.points; coinsList.push({username:u.username, patinhas:u.points}); });
+              console.log(`Coins offset ${offset} -> ${users.length} (total ${coinsList.length})`);
               if(users.length < 100) break;
               offset += 100;
             }while(offset < 1000);
 
-            // 3. Monta final
-            const final = allSubs.map(s=>{
-              const username = s.user?.username || s.username;
-              const meses = s.totalMonths || s.total || s.amount || 1;
-              return {
-                username: username,
-                totalMeses: parseInt(meses)||1,
-                meses: parseInt(meses)||1,
-                patinhas: coins[username?.toLowerCase()]||0,
-                tier: s.tier||1,
-                lastSub: s.updatedAt || s.lastSub || new Date().toISOString()
-              };
-            }).filter(x=>x.username);
+            // 4. Monta final - Se subs API retornou 0, usa coins como fallback mas marca como sub?
+            let final = [];
+            if(allSubs.length>0){
+              final = allSubs.map(s=>{
+                const username = s.user?.username || s.username || s.displayName;
+                const meses = s.totalMonths || s.total || s.amount || 1;
+                return { username, totalMeses: parseInt(meses)||1, meses: parseInt(meses)||1, patinhas: coinsMap[username?.toLowerCase()]||0, tier: s.tier||1 };
+              }).filter(x=>x.username);
+            } else {
+              console.log('SUBS API retornou 0, usando fallback dos 21 usuarios de patinhas como lista');
+              // Pega apenas quem tem atividade recente ou todos? Por enquanto todos do coins
+              final = coinsList.map(u=>({ username: u.username, totalMeses: 1, meses: 1, patinhas: u.patinhas, tier: 1, fallback: true }));
+            }
 
-            console.log(`FINAL PARA SALVAR: ${final.length} subs`);
+            console.log(`FINAL PARA SALVAR: ${final.length} subs/usuarios`);
+            final.slice(0,10).forEach(f=> console.log(`- ${f.username} | meses:${f.meses} | patinhas:${f.patinhas}`));
 
-            const data = { users: {}, count: final.length, updatedAt: new Date().toISOString() };
-            final.forEach(u=>{
-              data.users[u.username.toLowerCase()] = u;
-            });
+            const data = { users: {}, count: final.length, updatedAt: new Date().toISOString(), source: allSubs.length>0?'subscribers':'points_fallback' };
+            final.forEach(u=>{ data.users[u.username.toLowerCase()] = u; });
             fs.mkdirSync('data',{recursive:true});
             fs.writeFileSync('data/subs.json', JSON.stringify(data, null, 2));
             fs.writeFileSync('data/subs-full.json', JSON.stringify(final, null, 2));
-            console.log('Salvo data/subs.json');
+            console.log('Salvo data/subs.json com', final.length);
           })();
           JS
           node update.js
@@ -100,4 +126,4 @@ jobs:
           git config user.name "bot-patinha-auto"
           git config user.email "bot@miapatinhas.com"
           git add data/subs.json data/subs-full.json
-          git diff --staged --quiet || (git commit -m "auto: busca TODOS subs (${{ github.run_id }}) [bot]" && git push)
+          git diff --staged --quiet || (git commit -m "auto: busca subs+coins fix id via /me [bot]" && git push)
