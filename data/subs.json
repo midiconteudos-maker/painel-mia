@@ -1,154 +1,175 @@
 {
   "users": {
+    "miapatinhas": {
+      "username": "miapatinhas",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 100000,
+      "tier": 1,
+      "fallback": true
+    },
     "n_ot_": {
-      "username": "N_OT_",
-      "totalMeses": 9,
-      "meses": 9,
-      "patinhas": 5432,
-      "tier": 2
-    },
-    "jarva571": {
-      "username": "JARVA571",
-      "totalMeses": 7,
-      "meses": 7,
-      "patinhas": 3200,
-      "tier": 2
-    },
-    "eusoudochaa": {
-      "username": "Eusoudochaa",
-      "totalMeses": 6,
-      "meses": 6,
-      "patinhas": 2800,
-      "tier": 2
-    },
-    "xeno_may": {
-      "username": "XENO_MAY",
+      "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2000,
-      "tier": 1
+      "patinhas": 7000,
+      "tier": 1,
+      "fallback": true
     },
-    "kairox": {
-      "username": "KAIROX",
+    "ruiivafps": {
+      "username": "ruiivafps",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1920,
-      "tier": 1
-    },
-    "mutano_mg": {
-      "username": "Mutano_mg",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 1840,
-      "tier": 1
+      "patinhas": 3500,
+      "tier": 1,
+      "fallback": true
     },
     "tryie1": {
-      "username": "Tryie1",
+      "username": "tryie1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1760,
-      "tier": 1
+      "patinhas": 1500,
+      "tier": 1,
+      "fallback": true
     },
-    "ninjaeon": {
-      "username": "NINJAEON",
+    "mutando_mg": {
+      "username": "mutando_mg",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1680,
-      "tier": 1
+      "patinhas": 1500,
+      "tier": 1,
+      "fallback": true
     },
-    "lumina": {
-      "username": "Lumina",
+    "jarva571": {
+      "username": "jarva571",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1600,
-      "tier": 1
+      "patinhas": 1500,
+      "tier": 1,
+      "fallback": true
     },
-    "zeca_play": {
-      "username": "Zeca_Play",
+    "wizebot": {
+      "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1520,
-      "tier": 1
+      "patinhas": 600,
+      "tier": 1,
+      "fallback": true
     },
-    "biapatinhas": {
-      "username": "BiaPatinhas",
+    "swishj1": {
+      "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1440,
-      "tier": 1
+      "patinhas": 430,
+      "tier": 1,
+      "fallback": true
     },
-    "rex_lobo": {
-      "username": "Rex_Lobo",
+    "hycoosta": {
+      "username": "hycoosta",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1360,
-      "tier": 1
+      "patinhas": 60,
+      "tier": 1,
+      "fallback": true
     },
-    "mialovers": {
-      "username": "MiaLovers",
+    "mrdavdizz": {
+      "username": "mrdavdizz",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1280,
-      "tier": 1
+      "patinhas": 50,
+      "tier": 1,
+      "fallback": true
     },
-    "patinha123": {
-      "username": "Patinha123",
+    "fuuchimx": {
+      "username": "fuuchimx",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1200,
-      "tier": 1
+      "patinhas": 50,
+      "tier": 1,
+      "fallback": true
     },
-    "luna_": {
-      "username": "Luna_",
+    "mintakinhaa": {
+      "username": "mintakinhaa",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1120,
-      "tier": 1
+      "patinhas": 40,
+      "tier": 1,
+      "fallback": true
     },
-    "foxybr": {
-      "username": "FoxyBR",
+    "elo3187": {
+      "username": "elo3187",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1040,
-      "tier": 1
+      "patinhas": 40,
+      "tier": 1,
+      "fallback": true
     },
-    "dogking": {
-      "username": "DogKing",
+    "ryanzs": {
+      "username": "ryanzs",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 960,
-      "tier": 1
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
     },
-    "wolfmia": {
-      "username": "WolfMia",
+    "luky_kim": {
+      "username": "luky_kim",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 880,
-      "tier": 1
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
     },
-    "patasdeouro": {
-      "username": "PatasDeOuro",
+    "lituanodacoreia": {
+      "username": "lituanodacoreia",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 800,
-      "tier": 1
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
     },
-    "submia1": {
-      "username": "SubMia1",
+    "jvnlxz": {
+      "username": "jvnlxz",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 720,
-      "tier": 1
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
     },
-    "submia2": {
-      "username": "SubMia2",
+    "jinnibabe": {
+      "username": "jinnibabe",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 640,
-      "tier": 1
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
+    "honeybriixo": {
+      "username": "honeybriixo",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
+    "chloeey_": {
+      "username": "chloeey_",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
+    "alzxtt": {
+      "username": "alzxtt",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
     }
   },
   "count": 21,
-  "updatedAt": "2026-05-13T00:00:00.000Z",
-  "source": "manual_temp_21_para_parar_lista_vazia"
+  "updatedAt": "2026-09-23T06:12:29.133Z",
+  "source": "points_fallback"
 }
