@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#0b0b12;background: radial-gradient(1200px 600px at 50% -20%, #1a1033 0%, #0b0b12 60%, #07070a 100%);color:#fff;display:flex;justify-content:center;padding:14px;min-height:100vh}
+body{background:#0b0b12;background:radial-gradient(1200px 600px at 50% -20%, #1a1033 0%, #0b0b12 60%, #07070a 100%);color:#fff;display:flex;justify-content:center;padding:14px;min-height:100vh}
 .wrapper{width:420px}
 .header{text-align:center;margin-bottom:18px}
 .header h1{font-size:28px;font-weight:800;line-height:0.95;text-shadow:0 2px 10px rgba(0,0,0,0.8)}
@@ -97,7 +97,7 @@ body{background:#0b0b12;background: radial-gradient(1200px 600px at 50% -20%, #1
 <div id="lista"></div>
 </div>
 <script>
-const CONFIG = { twitchUsername: "miapatinhas" };
+const CONFIG = { channelId: "COLE_SEU_CHANNEL_ID_AQUI", jwtToken: "COLE_SEU_JWT_AQUI", twitchUsername: "miapatinhas" };
 function getRaridade(meses){
   if(meses>=18) return {id:"mitico", label:"👽 MÍTICO", bicho:"👽"};
   if(meses>=12) return {id:"lendario", label:"🐲 LENDÁRIO", bicho:"🐲"};
@@ -107,6 +107,7 @@ function getRaridade(meses){
   return {id:"comum", label:"🥔 COMUM", bicho:"🥔"};
 }
 function formatarTempo(meses){ if(meses===0) return "Não é sub"; if(meses===1) return "1 mês de sub"; return `${meses} meses de sub`; }
+const tempoSub = { "jarva571": 18, "jarva": 18, "ninjaeon": 14, "xeno_may": 9, "kairox": 7, "lumina": 5, "mutano_mg": 5, "tryie1": 3, "zeca_play": 1 };
 function getAvatarUrl(username){ return `https://unavatar.io/twitch/${username.toLowerCase()}`; }
 function render(lista){
   const el = document.getElementById('lista'); el.innerHTML = "";
@@ -126,48 +127,57 @@ function render(lista){
     el.appendChild(div);
   });
 }
-
 async function buscarReal(){
+  const listaEl = document.getElementById('lista');
   try{
+    // TENTA data/subs.json (do workflow FIX v3 com 21 usuarios)
     const res = await fetch('./data/subs.json?v=' + Date.now());
-    if(!res.ok) throw new Error('sem subs.json');
-    const data = await res.json();
-    let lista = [];
-    let source = data.source || 'subscribers';
-    if(Array.isArray(data)){
-      lista = data;
-    } else if(data.users){
-      lista = Object.values(data.users).map(u=>({ username: u.username, meses: u.totalMeses||u.meses||0, patinhas: u.patinhas||0, tier: u.tier||1, fallback: u.fallback||false }));
+    if(res.ok){
+      const data = await res.json();
+      let lista = [];
+      if(data.users){
+        lista = Object.values(data.users).map(u=>({ username: u.username, patinhas: u.patinhas||0, meses: u.totalMeses||u.meses||1 }));
+      } else if(Array.isArray(data)){
+        lista = data;
+      }
+      // Se tem mais que 3, mostra TODOS
+      if(lista.length > 0){
+        lista = lista.sort((a,b)=> b.meses - a.meses || b.patinhas - a.patinhas);
+        console.log('Carregou do data/subs.json:', lista.length);
+        render(lista);
+        return;
+      }
     }
-    lista = lista.sort((a,b)=> b.meses - a.meses || b.patinhas - a.patinhas);
-    if(lista.length===0) throw new Error('lista vazia');
-    console.log(`Painel carregou ${lista.length} usuarios de ${source}`);
-    // Aviso se for fallback
-    if(source === 'points_fallback'){
-      document.getElementById('lista').innerHTML = `<div style="text-align:center;padding:10px;margin-bottom:10px;color:#ffcc00;background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.2);border-radius:10px;font-size:12px">⚠️ Mostrando TOP Patinhas (API de subs retornou 404)<br><small style="color:#aaa">Seus subs ativos ainda não estão liberados na API da SE</small></div>` + `<div id="innerLista"></div>`;
-      render(lista, 'innerLista');
-    } else {
-      render(lista);
-    }
-    return;
+    throw new Error('subs.json vazio');
   }catch(e){
-    console.warn('Erro ao carregar data/subs.json', e);
-    document.getElementById('lista').innerHTML = `<div style="text-align:center;padding:30px;color:#ff6b6b;background:rgba(255,0,0,0.08);border:1px solid rgba(255,0,0,0.2);border-radius:12px">⚠️ Ainda buscando... Rode o workflow<br><small>${e.message}</small></div>`;
+    console.log('Fallback direto API:', e.message);
+    // FALLBACK DIRETO - busca 100 do TOP patinhas sem precisar de data/subs.json
+    try{
+      let channelId = null;
+      try{
+        const chanRes = await fetch(`https://api.streamelements.com/kappa/v2/channels/${CONFIG.twitchUsername}`);
+        if(chanRes.ok){ const chanData = await chanRes.json(); channelId = chanData._id; }
+      }catch(_){}
+      if(channelId){
+        const pRes = await fetch(`https://api.streamelements.com/kappa/v2/points/${channelId}/top?limit=100`);
+        if(pRes.ok){
+          const pData = await pRes.json();
+          const users = pData.users || [];
+          const lista = users.map(u=>{
+            const meses = tempoSub[u.username.toLowerCase()] || 1;
+            return { username: u.username, patinhas: u.points||0, meses: meses };
+          }).sort((a,b)=> b.meses - a.meses || b.patinhas - a.patinhas);
+          render(lista);
+          return;
+        }
+      }
+    }catch(err){ console.error(err); }
+    // Ultimo fallback - seus 6 oficiais
+    const exemplo = [ { username: "JARVA571", patinhas: 80, meses: 18 }, { username: "NINJAEON", patinhas: 3240, meses: 14 }, { username: "XENO_MAY", patinhas: 1980, meses: 9 }, { username: "KAIROX", patinhas: 860, meses: 7 }, { username: "Mutano_mg", patinhas: 520, meses: 5 }, { username: "Tryie1", patinhas: 120, meses: 3 }, ].sort((a,b)=> b.meses - a.meses); 
+    render(exemplo);
   }
 }
-function render(list, targetId){
-  const id = targetId || 'lista';
-  const el = document.getElementById(id);
-  if(!el) return;
-  const esc = s=> s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  el.innerHTML = list.map((u,i)=>{
-    const tier = (u.tier===3?'MAGO':u.tier===2?'MITICO':u.meses>=12?'LENDARIO':u.meses>=6?'RARO':'COMUM');
-    const mesesTxt = u.fallback ? `${u.patinhas} patinhas` : `${u.meses} ${u.meses===1?'mês':'meses'}`;
-    return `<div class="card ${tier.toLowerCase()}"><div class="left"><img class="avatar" src="${getAvatarUrl(u.username)}" onerror="this.src='https://unavatar.io/twitch/${u.username.toLowerCase()}'"><div class="info"><div class="name">${esc(u.username)}</div><div class="meta">${mesesTxt}${u.fallback?'':` • ${u.patinhas} patinhas`}</div></div></div><div class="right"><span class="badge ${tier.toLowerCase()}">${tier}</span></div></div>`;
-  }).join('');
-}
-buscarReal(); setInterval(buscarReal, 60000);
-
+buscarReal(); setInterval(buscarReal, 30000);
 
 </script>
 </body>
