@@ -3,7 +3,15 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 9400,
+    "patinhas": 10900,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "jarva571",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 4000,
     "tier": 1,
     "fallback": true
   },
@@ -32,18 +40,10 @@
     "fallback": true
   },
   {
-    "username": "jarva571",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 1500,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 930,
+    "patinhas": 1080,
     "tier": 1,
     "fallback": true
   },
@@ -51,7 +51,7 @@
     "username": "swishj1",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 610,
+    "patinhas": 650,
     "tier": 1,
     "fallback": true
   },
@@ -67,7 +67,7 @@
     "username": "hycoosta",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 100,
+    "patinhas": 120,
     "tier": 1,
     "fallback": true
   },
@@ -201,6 +201,14 @@
   },
   {
     "username": "chloeey_",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "bunniebella",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,

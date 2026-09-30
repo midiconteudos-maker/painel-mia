@@ -4,7 +4,15 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 9400,
+      "patinhas": 10900,
+      "tier": 1,
+      "fallback": true
+    },
+    "jarva571": {
+      "username": "jarva571",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 4000,
       "tier": 1,
       "fallback": true
     },
@@ -32,19 +40,11 @@
       "tier": 1,
       "fallback": true
     },
-    "jarva571": {
-      "username": "jarva571",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 1500,
-      "tier": 1,
-      "fallback": true
-    },
     "wizebot": {
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 930,
+      "patinhas": 1080,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 610,
+      "patinhas": 650,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "hycoosta",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 100,
+      "patinhas": 120,
       "tier": 1,
       "fallback": true
     },
@@ -208,6 +208,14 @@
       "tier": 1,
       "fallback": true
     },
+    "bunniebella": {
+      "username": "bunniebella",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "alzxtt": {
       "username": "alzxtt",
       "totalMeses": 1,
@@ -217,7 +225,7 @@
       "fallback": true
     }
   },
-  "count": 27,
-  "updatedAt": "2026-09-30T00:14:13.447Z",
+  "count": 28,
+  "updatedAt": "2026-09-30T03:10:27.255Z",
   "source": "points_fallback"
 }
