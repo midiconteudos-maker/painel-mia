@@ -3,7 +3,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 10900,
+    "patinhas": 11300,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 1080,
+    "patinhas": 1150,
     "tier": 1,
     "fallback": true
   },
@@ -132,6 +132,14 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 20,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "waattashi",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
     "tier": 1,
     "fallback": true
   },
