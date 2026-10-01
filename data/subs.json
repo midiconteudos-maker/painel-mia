@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 11300,
+      "patinhas": 13000,
       "tier": 1,
       "fallback": true
     },
@@ -12,7 +12,7 @@
       "username": "jarva571",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4000,
+      "patinhas": 4100,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1150,
+      "patinhas": 1320,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 650,
+      "patinhas": 770,
       "tier": 1,
       "fallback": true
     },
@@ -69,6 +69,14 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 120,
+      "tier": 1,
+      "fallback": true
+    },
+    "thitkill": {
+      "username": "thitkill",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 80,
       "tier": 1,
       "fallback": true
     },
@@ -136,6 +144,14 @@
       "tier": 1,
       "fallback": true
     },
+    "taldoluisz": {
+      "username": "taldoluisz",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 20,
+      "tier": 1,
+      "fallback": true
+    },
     "waattashi": {
       "username": "waattashi",
       "totalMeses": 1,
@@ -170,6 +186,14 @@
     },
     "lituanodacoreia": {
       "username": "lituanodacoreia",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
+    "kynigos98": {
+      "username": "kynigos98",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 10,
@@ -233,7 +257,7 @@
       "fallback": true
     }
   },
-  "count": 29,
-  "updatedAt": "2026-10-01T00:14:57.234Z",
+  "count": 32,
+  "updatedAt": "2026-10-01T03:10:23.771Z",
   "source": "points_fallback"
 }
