@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 15500,
+      "patinhas": 16600,
       "tier": 1,
       "fallback": true
     },
@@ -20,7 +20,7 @@
       "username": "ruiivafps",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 3500,
+      "patinhas": 3700,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1570,
+      "patinhas": 1680,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 870,
+      "patinhas": 920,
       "tier": 1,
       "fallback": true
     },
@@ -80,8 +80,24 @@
       "tier": 1,
       "fallback": true
     },
+    "mthellboy": {
+      "username": "mthellboy",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 50,
+      "tier": 1,
+      "fallback": true
+    },
     "mrdavdizz": {
       "username": "mrdavdizz",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 50,
+      "tier": 1,
+      "fallback": true
+    },
+    "gindefrutas": {
+      "username": "gindefrutas",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 50,
@@ -192,6 +208,14 @@
       "tier": 1,
       "fallback": true
     },
+    "luiscameraacao": {
+      "username": "luiscameraacao",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "lituanodacoreia": {
       "username": "lituanodacoreia",
       "totalMeses": 1,
@@ -248,6 +272,14 @@
       "tier": 1,
       "fallback": true
     },
+    "baeelee_": {
+      "username": "baeelee_",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "alzxtt": {
       "username": "alzxtt",
       "totalMeses": 1,
@@ -257,7 +289,7 @@
       "fallback": true
     }
   },
-  "count": 32,
-  "updatedAt": "2026-10-02T21:09:33.660Z",
+  "count": 36,
+  "updatedAt": "2026-10-03T00:13:38.411Z",
   "source": "points_fallback"
 }
