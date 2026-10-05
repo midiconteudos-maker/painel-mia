@@ -8,19 +8,11 @@
       "tier": 1,
       "fallback": true
     },
-    "marii": {
-      "username": "marii",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 15000,
-      "tier": 1,
-      "fallback": true
-    },
     "ruiivafps": {
       "username": "ruiivafps",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 5300,
+      "patinhas": 8000,
       "tier": 1,
       "fallback": true
     },
@@ -32,19 +24,11 @@
       "tier": 1,
       "fallback": true
     },
-    "tryie": {
-      "username": "tryie",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 4000,
-      "tier": 1,
-      "fallback": true
-    },
     "tryie1": {
       "username": "tryie1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2900,
+      "patinhas": 3800,
       "tier": 1,
       "fallback": true
     },
@@ -329,7 +313,7 @@
       "fallback": true
     }
   },
-  "count": 41,
-  "updatedAt": "2026-10-05T00:14:49.679Z",
+  "count": 39,
+  "updatedAt": "2026-10-05T03:11:21.856Z",
   "source": "points_fallback"
 }

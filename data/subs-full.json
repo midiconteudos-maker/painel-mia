@@ -8,18 +8,10 @@
     "fallback": true
   },
   {
-    "username": "marii",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 15000,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "ruiivafps",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5300,
+    "patinhas": 8000,
     "tier": 1,
     "fallback": true
   },
@@ -32,18 +24,10 @@
     "fallback": true
   },
   {
-    "username": "tryie",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 4000,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "tryie1",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 2900,
+    "patinhas": 3800,
     "tier": 1,
     "fallback": true
   },
