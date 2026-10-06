@@ -1,17 +1,17 @@
 [
   {
-    "username": "miapatinhas",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 100000,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 19900,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "miapatinhas",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 14000,
     "tier": 1,
     "fallback": true
   },
