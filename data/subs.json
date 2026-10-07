@@ -1,13 +1,5 @@
 {
   "users": {
-    "n_ot_": {
-      "username": "n_ot_",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 22700,
-      "tier": 1,
-      "fallback": true
-    },
     "miapatinhas": {
       "username": "miapatinhas",
       "totalMeses": 1,
@@ -21,6 +13,14 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 9300,
+      "tier": 1,
+      "fallback": true
+    },
+    "n_ot_": {
+      "username": "n_ot_",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 5700,
       "tier": 1,
       "fallback": true
     },
@@ -330,6 +330,6 @@
     }
   },
   "count": 41,
-  "updatedAt": "2026-10-07T03:10:47.696Z",
+  "updatedAt": "2026-10-07T06:11:58.318Z",
   "source": "points_fallback"
 }
