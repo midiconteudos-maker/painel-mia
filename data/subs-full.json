@@ -11,7 +11,7 @@
     "username": "ruiivafps",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 10090,
+    "patinhas": 12000,
     "tier": 1,
     "fallback": true
   },
@@ -19,7 +19,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 9100,
+    "patinhas": 10300,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,15 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 2680,
+    "patinhas": 2810,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "swishj1",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 1580,
     "tier": 1,
     "fallback": true
   },
@@ -56,18 +64,10 @@
     "fallback": true
   },
   {
-    "username": "swishj1",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 1450,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "botrixoficial",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 910,
+    "patinhas": 1040,
     "tier": 1,
     "fallback": true
   },
@@ -92,6 +92,14 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 120,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "shimmfps",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 110,
     "tier": 1,
     "fallback": true
   },
@@ -184,6 +192,14 @@
     "fallback": true
   },
   {
+    "username": "le4ndr0k1ll",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 30,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "kynigos98",
     "totalMeses": 1,
     "meses": 1,
@@ -241,6 +257,14 @@
   },
   {
     "username": "ryanzs",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "pulse3__",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,

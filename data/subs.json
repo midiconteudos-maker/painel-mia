@@ -12,7 +12,7 @@
       "username": "ruiivafps",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 10090,
+      "patinhas": 12000,
       "tier": 1,
       "fallback": true
     },
@@ -20,7 +20,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 9100,
+      "patinhas": 10300,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,15 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2680,
+      "patinhas": 2810,
+      "tier": 1,
+      "fallback": true
+    },
+    "swishj1": {
+      "username": "swishj1",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 1580,
       "tier": 1,
       "fallback": true
     },
@@ -56,19 +64,11 @@
       "tier": 1,
       "fallback": true
     },
-    "swishj1": {
-      "username": "swishj1",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 1450,
-      "tier": 1,
-      "fallback": true
-    },
     "botrixoficial": {
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 910,
+      "patinhas": 1040,
       "tier": 1,
       "fallback": true
     },
@@ -93,6 +93,14 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 120,
+      "tier": 1,
+      "fallback": true
+    },
+    "shimmfps": {
+      "username": "shimmfps",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 110,
       "tier": 1,
       "fallback": true
     },
@@ -184,6 +192,14 @@
       "tier": 1,
       "fallback": true
     },
+    "le4ndr0k1ll": {
+      "username": "le4ndr0k1ll",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 30,
+      "tier": 1,
+      "fallback": true
+    },
     "kynigos98": {
       "username": "kynigos98",
       "totalMeses": 1,
@@ -242,6 +258,14 @@
     },
     "ryanzs": {
       "username": "ryanzs",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
+    "pulse3__": {
+      "username": "pulse3__",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 10,
@@ -353,7 +377,7 @@
       "fallback": true
     }
   },
-  "count": 44,
-  "updatedAt": "2026-10-09T00:16:20.499Z",
+  "count": 47,
+  "updatedAt": "2026-10-09T03:10:32.617Z",
   "source": "points_fallback"
 }
