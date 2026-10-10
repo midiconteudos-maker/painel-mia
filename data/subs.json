@@ -1,5 +1,13 @@
 {
   "users": {
+    "ruiivafps": {
+      "username": "ruiivafps",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 14900,
+      "tier": 1,
+      "fallback": true
+    },
     "miapatinhas": {
       "username": "miapatinhas",
       "totalMeses": 1,
@@ -8,19 +16,11 @@
       "tier": 1,
       "fallback": true
     },
-    "ruiivafps": {
-      "username": "ruiivafps",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 12000,
-      "tier": 1,
-      "fallback": true
-    },
     "n_ot_": {
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 10300,
+      "patinhas": 13200,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,7 @@
       "username": "tryie1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 3800,
+      "patinhas": 4100,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2810,
+      "patinhas": 3110,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1580,
+      "patinhas": 1740,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1040,
+      "patinhas": 1340,
       "tier": 1,
       "fallback": true
     },
@@ -90,6 +90,14 @@
     },
     "hycoosta": {
       "username": "hycoosta",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 120,
+      "tier": 1,
+      "fallback": true
+    },
+    "buarque_caio": {
+      "username": "buarque_caio",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 120,
@@ -312,6 +320,14 @@
       "tier": 1,
       "fallback": true
     },
+    "llxtazxll": {
+      "username": "llxtazxll",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "lituanodacoreia": {
       "username": "lituanodacoreia",
       "totalMeses": 1,
@@ -377,7 +393,7 @@
       "fallback": true
     }
   },
-  "count": 47,
-  "updatedAt": "2026-10-09T22:15:04.817Z",
+  "count": 49,
+  "updatedAt": "2026-10-10T04:20:14.317Z",
   "source": "points_fallback"
 }
