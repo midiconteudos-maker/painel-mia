@@ -3,7 +3,15 @@
     "username": "ruiivafps",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 14900,
+    "patinhas": 17000,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "n_ot_",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 15800,
     "tier": 1,
     "fallback": true
   },
@@ -16,18 +24,10 @@
     "fallback": true
   },
   {
-    "username": "n_ot_",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 13700,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "jarva571",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5000,
+    "patinhas": 6100,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 3170,
+    "patinhas": 3400,
     "tier": 1,
     "fallback": true
   },
@@ -51,7 +51,15 @@
     "username": "swishj1",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 1780,
+    "patinhas": 1920,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "botrixoficial",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 1630,
     "tier": 1,
     "fallback": true
   },
@@ -60,14 +68,6 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 1500,
-    "tier": 1,
-    "fallback": true
-  },
-  {
-    "username": "botrixoficial",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 1400,
     "tier": 1,
     "fallback": true
   },
@@ -113,6 +113,14 @@
   },
   {
     "username": "mthellboy",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 60,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "anna75hz",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 60,
@@ -264,6 +272,14 @@
     "fallback": true
   },
   {
+    "username": "sidoka_sz",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "ryanzs",
     "totalMeses": 1,
     "meses": 1,
@@ -353,6 +369,14 @@
   },
   {
     "username": "honeybriixo",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "gl7xd",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,
