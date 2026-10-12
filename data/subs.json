@@ -20,7 +20,7 @@
       "username": "miapatinhas",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 14000,
+      "patinhas": 12000,
       "tier": 1,
       "fallback": true
     },
@@ -418,6 +418,6 @@
     }
   },
   "count": 52,
-  "updatedAt": "2026-10-12T10:13:21.436Z",
+  "updatedAt": "2026-10-12T20:54:10.640Z",
   "source": "points_fallback"
 }
