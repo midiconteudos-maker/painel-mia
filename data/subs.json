@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 25610,
+      "patinhas": 26310,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4290,
+      "patinhas": 4360,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2520,
+      "patinhas": 2590,
       "tier": 1,
       "fallback": true
     },
@@ -60,7 +60,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2430,
+      "patinhas": 2500,
       "tier": 1,
       "fallback": true
     },
@@ -76,7 +76,7 @@
       "username": "maarissz",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 700,
+      "patinhas": 1400,
       "tier": 1,
       "fallback": true
     },
@@ -92,7 +92,7 @@
       "username": "utkaio",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 160,
+      "patinhas": 220,
       "tier": 1,
       "fallback": true
     },
@@ -124,12 +124,20 @@
       "username": "1910miguel1mello",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 70,
+      "patinhas": 80,
       "tier": 1,
       "fallback": true
     },
     "mthellboy": {
       "username": "mthellboy",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 60,
+      "tier": 1,
+      "fallback": true
+    },
+    "diga1m": {
+      "username": "diga1m",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 60,
@@ -489,7 +497,7 @@
       "fallback": true
     }
   },
-  "count": 61,
-  "updatedAt": "2026-10-20T00:05:54.994Z",
+  "count": 62,
+  "updatedAt": "2026-10-20T08:10:57.844Z",
   "source": "points_fallback"
 }
