@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 29110,
+      "patinhas": 30110,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4670,
+      "patinhas": 4780,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2900,
+      "patinhas": 3010,
       "tier": 1,
       "fallback": true
     },
@@ -60,7 +60,15 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2760,
+      "patinhas": 2810,
+      "tier": 1,
+      "fallback": true
+    },
+    "maarissz": {
+      "username": "maarissz",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 2400,
       "tier": 1,
       "fallback": true
     },
@@ -69,14 +77,6 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 1500,
-      "tier": 1,
-      "fallback": true
-    },
-    "maarissz": {
-      "username": "maarissz",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 1400,
       "tier": 1,
       "fallback": true
     },
@@ -498,6 +498,6 @@
     }
   },
   "count": 62,
-  "updatedAt": "2026-10-22T21:11:57.189Z",
+  "updatedAt": "2026-10-23T03:23:13.705Z",
   "source": "points_fallback"
 }
