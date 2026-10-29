@@ -3,7 +3,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 35510,
+    "patinhas": 36410,
     "tier": 1,
     "fallback": true
   },
@@ -16,18 +16,18 @@
     "fallback": true
   },
   {
-    "username": "miapatinhas",
+    "username": "jarva571",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 10000,
+    "patinhas": 10300,
     "tier": 1,
     "fallback": true
   },
   {
-    "username": "jarva571",
+    "username": "miapatinhas",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 8600,
+    "patinhas": 10000,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5380,
+    "patinhas": 5480,
     "tier": 1,
     "fallback": true
   },
@@ -59,7 +59,7 @@
     "username": "botrixoficial",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 3610,
+    "patinhas": 3710,
     "tier": 1,
     "fallback": true
   },
@@ -120,10 +120,26 @@
     "fallback": true
   },
   {
+    "username": "xtauriell",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 80,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "1910miguel1mello",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 80,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "xxnevascaxx",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 60,
     "tier": 1,
     "fallback": true
   },
@@ -228,14 +244,6 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 40,
-    "tier": 1,
-    "fallback": true
-  },
-  {
-    "username": "xtauriell",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 30,
     "tier": 1,
     "fallback": true
   },
@@ -464,6 +472,14 @@
     "fallback": true
   },
   {
+    "username": "fentarix",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "ellieebees",
     "totalMeses": 1,
     "meses": 1,
@@ -481,6 +497,14 @@
   },
   {
     "username": "chloeey_",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "bayitua",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,
