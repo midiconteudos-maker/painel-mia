@@ -3,7 +3,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 40410,
+    "patinhas": 42310,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5890,
+    "patinhas": 6080,
     "tier": 1,
     "fallback": true
   },
@@ -51,7 +51,7 @@
     "username": "botrixoficial",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 4120,
+    "patinhas": 4310,
     "tier": 1,
     "fallback": true
   },
@@ -67,7 +67,7 @@
     "username": "swishj1",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 3210,
+    "patinhas": 3400,
     "tier": 1,
     "fallback": true
   },
@@ -96,18 +96,18 @@
     "fallback": true
   },
   {
-    "username": "utkaio",
+    "username": "stazblood97",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 220,
+    "patinhas": 230,
     "tier": 1,
     "fallback": true
   },
   {
-    "username": "stazblood97",
+    "username": "utkaio",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 140,
+    "patinhas": 220,
     "tier": 1,
     "fallback": true
   },
@@ -144,10 +144,26 @@
     "fallback": true
   },
   {
+    "username": "lukpupp",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 110,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "1910miguel1mello",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 80,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "decasrj",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 70,
     "tier": 1,
     "fallback": true
   },
@@ -384,6 +400,14 @@
     "fallback": true
   },
   {
+    "username": "notregularinvestor",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "matcha_gf",
     "totalMeses": 1,
     "meses": 1,
@@ -569,6 +593,14 @@
   },
   {
     "username": "allonne3",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "alencar_jpeg",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,
