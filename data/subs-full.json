@@ -24,14 +24,6 @@
     "fallback": true
   },
   {
-    "username": "miapatinhas",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 10000,
-    "tier": 1,
-    "fallback": true
-  },
-  {
     "username": "maarissz",
     "totalMeses": 1,
     "meses": 1,
@@ -44,6 +36,14 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 6290,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "miapatinhas",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 6000,
     "tier": 1,
     "fallback": true
   },

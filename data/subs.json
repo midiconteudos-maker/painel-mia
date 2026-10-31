@@ -24,14 +24,6 @@
       "tier": 1,
       "fallback": true
     },
-    "miapatinhas": {
-      "username": "miapatinhas",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10000,
-      "tier": 1,
-      "fallback": true
-    },
     "maarissz": {
       "username": "maarissz",
       "totalMeses": 1,
@@ -45,6 +37,14 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 6290,
+      "tier": 1,
+      "fallback": true
+    },
+    "miapatinhas": {
+      "username": "miapatinhas",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 6000,
       "tier": 1,
       "fallback": true
     },
@@ -714,6 +714,6 @@
     }
   },
   "count": 89,
-  "updatedAt": "2026-10-31T16:48:52.979Z",
+  "updatedAt": "2026-10-31T20:58:37.610Z",
   "source": "points_fallback"
 }
