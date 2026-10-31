@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 43210,
+      "patinhas": 43910,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 6290,
+      "patinhas": 6360,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4520,
+      "patinhas": 4590,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 3600,
+      "patinhas": 3660,
       "tier": 1,
       "fallback": true
     },
@@ -96,6 +96,14 @@
       "tier": 1,
       "fallback": true
     },
+    "miapatinhas2": {
+      "username": "miapatinhas2",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 280,
+      "tier": 1,
+      "fallback": true
+    },
     "stazblood97": {
       "username": "stazblood97",
       "totalMeses": 1,
@@ -117,14 +125,6 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 220,
-      "tier": 1,
-      "fallback": true
-    },
-    "miapatinhas2": {
-      "username": "miapatinhas2",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 210,
       "tier": 1,
       "fallback": true
     },
@@ -264,6 +264,14 @@
       "tier": 1,
       "fallback": true
     },
+    "magronescc": {
+      "username": "magronescc",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 50,
+      "tier": 1,
+      "fallback": true
+    },
     "godviict": {
       "username": "godviict",
       "totalMeses": 1,
@@ -306,6 +314,14 @@
     },
     "elo3187": {
       "username": "elo3187",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 40,
+      "tier": 1,
+      "fallback": true
+    },
+    "brimcode": {
+      "username": "brimcode",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 40,
@@ -713,7 +729,7 @@
       "fallback": true
     }
   },
-  "count": 89,
-  "updatedAt": "2026-10-31T20:58:37.610Z",
+  "count": 91,
+  "updatedAt": "2026-10-31T23:59:36.549Z",
   "source": "points_fallback"
 }
