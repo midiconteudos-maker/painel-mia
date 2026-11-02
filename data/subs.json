@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 47210,
+      "patinhas": 48610,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,15 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 6700,
+      "patinhas": 6840,
+      "tier": 1,
+      "fallback": true
+    },
+    "botrixoficial": {
+      "username": "botrixoficial",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 5070,
       "tier": 1,
       "fallback": true
     },
@@ -45,14 +53,6 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 5000,
-      "tier": 1,
-      "fallback": true
-    },
-    "botrixoficial": {
-      "username": "botrixoficial",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 4930,
       "tier": 1,
       "fallback": true
     },
@@ -84,7 +84,15 @@
       "username": "miapatinhas2",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 620,
+      "patinhas": 760,
+      "tier": 1,
+      "fallback": true
+    },
+    "thitkill": {
+      "username": "thitkill",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 450,
       "tier": 1,
       "fallback": true
     },
@@ -104,11 +112,11 @@
       "tier": 1,
       "fallback": true
     },
-    "thitkill": {
-      "username": "thitkill",
+    "utkaio": {
+      "username": "utkaio",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 320,
+      "patinhas": 240,
       "tier": 1,
       "fallback": true
     },
@@ -117,14 +125,6 @@
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 230,
-      "tier": 1,
-      "fallback": true
-    },
-    "utkaio": {
-      "username": "utkaio",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 220,
       "tier": 1,
       "fallback": true
     },
@@ -512,6 +512,14 @@
       "tier": 1,
       "fallback": true
     },
+    "seftzera": {
+      "username": "seftzera",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "ryanzs": {
       "username": "ryanzs",
       "totalMeses": 1,
@@ -761,7 +769,7 @@
       "fallback": true
     }
   },
-  "count": 95,
-  "updatedAt": "2026-11-02T10:31:57.073Z",
+  "count": 96,
+  "updatedAt": "2026-11-02T21:23:46.232Z",
   "source": "points_fallback"
 }
