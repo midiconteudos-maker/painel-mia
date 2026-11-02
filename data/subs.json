@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 45010,
+      "patinhas": 46710,
       "tier": 1,
       "fallback": true
     },
@@ -36,7 +36,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 6470,
+      "patinhas": 6650,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "miapatinhas",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 6000,
+      "patinhas": 5000,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4700,
+      "patinhas": 4880,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 3760,
+      "patinhas": 3790,
       "tier": 1,
       "fallback": true
     },
@@ -80,19 +80,19 @@
       "tier": 1,
       "fallback": true
     },
+    "miapatinhas2": {
+      "username": "miapatinhas2",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 570,
+      "tier": 1,
+      "fallback": true
+    },
     "mutano_mg": {
       "username": "mutano_mg",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 400,
-      "tier": 1,
-      "fallback": true
-    },
-    "miapatinhas2": {
-      "username": "miapatinhas2",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 390,
       "tier": 1,
       "fallback": true
     },
@@ -264,6 +264,14 @@
       "tier": 1,
       "fallback": true
     },
+    "guizyin": {
+      "username": "guizyin",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 60,
+      "tier": 1,
+      "fallback": true
+    },
     "diga1m": {
       "username": "diga1m",
       "totalMeses": 1,
@@ -290,14 +298,6 @@
     },
     "magronescc": {
       "username": "magronescc",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 50,
-      "tier": 1,
-      "fallback": true
-    },
-    "guizyin": {
-      "username": "guizyin",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 50,
@@ -754,6 +754,6 @@
     }
   },
   "count": 94,
-  "updatedAt": "2026-11-01T19:22:12.425Z",
+  "updatedAt": "2026-11-02T00:13:16.787Z",
   "source": "points_fallback"
 }
