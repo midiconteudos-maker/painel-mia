@@ -3,7 +3,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 50810,
+    "patinhas": 51910,
     "tier": 1,
     "fallback": true
   },
@@ -19,7 +19,7 @@
     "username": "jarva571",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 13710,
+    "patinhas": 14710,
     "tier": 1,
     "fallback": true
   },
@@ -27,7 +27,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 7060,
+    "patinhas": 7170,
     "tier": 1,
     "fallback": true
   },
@@ -43,15 +43,7 @@
     "username": "botrixoficial",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5290,
-    "tier": 1,
-    "fallback": true
-  },
-  {
-    "username": "miapatinhas",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 5000,
+    "patinhas": 5400,
     "tier": 1,
     "fallback": true
   },
@@ -67,7 +59,7 @@
     "username": "swishj1",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 3910,
+    "patinhas": 4010,
     "tier": 1,
     "fallback": true
   },
@@ -83,7 +75,15 @@
     "username": "miapatinhas2",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 980,
+    "patinhas": 1080,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "miapatinhas",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 1000,
     "tier": 1,
     "fallback": true
   },
@@ -168,6 +168,14 @@
     "fallback": true
   },
   {
+    "username": "lukpupp",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 130,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "brimcode",
     "totalMeses": 1,
     "meses": 1,
@@ -193,14 +201,6 @@
   },
   {
     "username": "shimmfps",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 110,
-    "tier": 1,
-    "fallback": true
-  },
-  {
-    "username": "lukpupp",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 110,
@@ -408,6 +408,14 @@
     "fallback": true
   },
   {
+    "username": "brunoketisui",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 30,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "ands31_",
     "totalMeses": 1,
     "meses": 1,
@@ -473,14 +481,6 @@
   },
   {
     "username": "bunniebella",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 20,
-    "tier": 1,
-    "fallback": true
-  },
-  {
-    "username": "brunoketisui",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 20,
