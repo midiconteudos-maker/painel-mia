@@ -3,7 +3,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 51910,
+    "patinhas": 53210,
     "tier": 1,
     "fallback": true
   },
@@ -19,7 +19,7 @@
     "username": "jarva571",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 14710,
+    "patinhas": 16010,
     "tier": 1,
     "fallback": true
   },
@@ -27,7 +27,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 7170,
+    "patinhas": 7300,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,15 @@
     "username": "botrixoficial",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5400,
+    "patinhas": 5530,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "swishj1",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 4140,
     "tier": 1,
     "fallback": true
   },
@@ -52,14 +60,6 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 4130,
-    "tier": 1,
-    "fallback": true
-  },
-  {
-    "username": "swishj1",
-    "totalMeses": 1,
-    "meses": 1,
-    "patinhas": 4010,
     "tier": 1,
     "fallback": true
   },
@@ -75,7 +75,7 @@
     "username": "miapatinhas2",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 1080,
+    "patinhas": 1210,
     "tier": 1,
     "fallback": true
   },
@@ -91,7 +91,7 @@
     "username": "thitkill",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 470,
+    "patinhas": 490,
     "tier": 1,
     "fallback": true
   },
@@ -336,6 +336,14 @@
     "fallback": true
   },
   {
+    "username": "adriandantasf",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 50,
+    "tier": 1,
+    "fallback": true
+  },
+  {
     "username": "matheuus__0",
     "totalMeses": 1,
     "meses": 1,
@@ -356,6 +364,14 @@
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 40,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "xxatlanttaxx",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 30,
     "tier": 1,
     "fallback": true
   },
@@ -489,6 +505,14 @@
   },
   {
     "username": "waattashi",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "vitinhondestou",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,
@@ -641,6 +665,14 @@
   },
   {
     "username": "jinnibabe",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 10,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "ifoxsz",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 10,
