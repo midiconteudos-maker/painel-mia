@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 53210,
+      "patinhas": 54610,
       "tier": 1,
       "fallback": true
     },
@@ -28,7 +28,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 7300,
+      "patinhas": 7460,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 5530,
+      "patinhas": 5690,
       "tier": 1,
       "fallback": true
     },
@@ -76,7 +76,7 @@
       "username": "miapatinhas2",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1210,
+      "patinhas": 1370,
       "tier": 1,
       "fallback": true
     },
@@ -210,6 +210,14 @@
     },
     "z_blackkk": {
       "username": "z_blackkk",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 80,
+      "tier": 1,
+      "fallback": true
+    },
+    "magicmdk": {
+      "username": "magicmdk",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 80,
@@ -656,6 +664,14 @@
       "tier": 1,
       "fallback": true
     },
+    "juweu": {
+      "username": "juweu",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "juniorreisz": {
       "username": "juniorreisz",
       "totalMeses": 1,
@@ -799,9 +815,17 @@
       "patinhas": 10,
       "tier": 1,
       "fallback": true
+    },
+    "aisai_p": {
+      "username": "aisai_p",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
     }
   },
-  "count": 100,
-  "updatedAt": "2026-11-04T19:21:34.432Z",
+  "count": 103,
+  "updatedAt": "2026-11-05T01:17:06.839Z",
   "source": "points_fallback"
 }
