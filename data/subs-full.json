@@ -3,7 +3,7 @@
     "username": "n_ot_",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 54610,
+    "patinhas": 55910,
     "tier": 1,
     "fallback": true
   },
@@ -27,7 +27,7 @@
     "username": "wizebot",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 7460,
+    "patinhas": 7590,
     "tier": 1,
     "fallback": true
   },
@@ -43,7 +43,7 @@
     "username": "botrixoficial",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 5690,
+    "patinhas": 5820,
     "tier": 1,
     "fallback": true
   },
@@ -51,7 +51,7 @@
     "username": "swishj1",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 4140,
+    "patinhas": 4210,
     "tier": 1,
     "fallback": true
   },
@@ -75,7 +75,7 @@
     "username": "miapatinhas2",
     "totalMeses": 1,
     "meses": 1,
-    "patinhas": 1370,
+    "patinhas": 1500,
     "tier": 1,
     "fallback": true
   },
@@ -281,6 +281,14 @@
   },
   {
     "username": "diga1m",
+    "totalMeses": 1,
+    "meses": 1,
+    "patinhas": 60,
+    "tier": 1,
+    "fallback": true
+  },
+  {
+    "username": "deliciacremosa7",
     "totalMeses": 1,
     "meses": 1,
     "patinhas": 60,
