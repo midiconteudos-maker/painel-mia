@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 57310,
+      "patinhas": 59110,
       "tier": 1,
       "fallback": true
     },
@@ -28,7 +28,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 7750,
+      "patinhas": 7940,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 5980,
+      "patinhas": 6170,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4240,
+      "patinhas": 4400,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "miapatinhas2",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1650,
+      "patinhas": 1830,
       "tier": 1,
       "fallback": true
     },
@@ -592,6 +592,14 @@
       "tier": 1,
       "fallback": true
     },
+    "o_senhor_f": {
+      "username": "o_senhor_f",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
     "notregularinvestor": {
       "username": "notregularinvestor",
       "totalMeses": 1,
@@ -602,6 +610,14 @@
     },
     "matcha_gf": {
       "username": "matcha_gf",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 10,
+      "tier": 1,
+      "fallback": true
+    },
+    "lurxx": {
+      "username": "lurxx",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 10,
@@ -841,7 +857,7 @@
       "fallback": true
     }
   },
-  "count": 105,
-  "updatedAt": "2026-11-09T21:55:57.612Z",
+  "count": 107,
+  "updatedAt": "2026-11-10T05:56:23.679Z",
   "source": "points_fallback"
 }
