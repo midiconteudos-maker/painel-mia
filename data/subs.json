@@ -80,14 +80,6 @@
       "tier": 1,
       "fallback": true
     },
-    "miapatinhas": {
-      "username": "miapatinhas",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 1000,
-      "tier": 1,
-      "fallback": true
-    },
     "thitkill": {
       "username": "thitkill",
       "totalMeses": 1,
@@ -873,7 +865,7 @@
       "fallback": true
     }
   },
-  "count": 109,
-  "updatedAt": "2026-11-11T13:33:29.598Z",
+  "count": 108,
+  "updatedAt": "2026-11-11T21:44:06.423Z",
   "source": "points_fallback"
 }
