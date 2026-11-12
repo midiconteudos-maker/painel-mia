@@ -4,7 +4,15 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 60910,
+      "patinhas": 62110,
+      "tier": 1,
+      "fallback": true
+    },
+    "jarva571": {
+      "username": "jarva571",
+      "totalMeses": 1,
+      "meses": 1,
+      "patinhas": 17110,
       "tier": 1,
       "fallback": true
     },
@@ -16,19 +24,11 @@
       "tier": 1,
       "fallback": true
     },
-    "jarva571": {
-      "username": "jarva571",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 16010,
-      "tier": 1,
-      "fallback": true
-    },
     "wizebot": {
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 8130,
+      "patinhas": 8250,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 6360,
+      "patinhas": 6480,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4400,
+      "patinhas": 4440,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "miapatinhas2",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 1990,
+      "patinhas": 2110,
       "tier": 1,
       "fallback": true
     },
@@ -866,6 +866,6 @@
     }
   },
   "count": 108,
-  "updatedAt": "2026-11-11T21:44:06.423Z",
+  "updatedAt": "2026-11-12T05:45:17.988Z",
   "source": "points_fallback"
 }
