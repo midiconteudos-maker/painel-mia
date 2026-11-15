@@ -4,7 +4,7 @@
       "username": "n_ot_",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 63810,
+      "patinhas": 64410,
       "tier": 1,
       "fallback": true
     },
@@ -28,7 +28,7 @@
       "username": "wizebot",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 8470,
+      "patinhas": 8530,
       "tier": 1,
       "fallback": true
     },
@@ -44,7 +44,7 @@
       "username": "botrixoficial",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 6700,
+      "patinhas": 6760,
       "tier": 1,
       "fallback": true
     },
@@ -52,7 +52,7 @@
       "username": "swishj1",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 4480,
+      "patinhas": 4540,
       "tier": 1,
       "fallback": true
     },
@@ -68,7 +68,7 @@
       "username": "jaulinhoo",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2300,
+      "patinhas": 2900,
       "tier": 1,
       "fallback": true
     },
@@ -76,7 +76,7 @@
       "username": "miapatinhas2",
       "totalMeses": 1,
       "meses": 1,
-      "patinhas": 2130,
+      "patinhas": 2190,
       "tier": 1,
       "fallback": true
     },
@@ -392,14 +392,6 @@
       "tier": 1,
       "fallback": true
     },
-    "elo3187": {
-      "username": "elo3187",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 40,
-      "tier": 1,
-      "fallback": true
-    },
     "arenavalorantt": {
       "username": "arenavalorantt",
       "totalMeses": 1,
@@ -592,14 +584,6 @@
       "tier": 1,
       "fallback": true
     },
-    "ryanzs": {
-      "username": "ryanzs",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
     "ragnael_tb": {
       "username": "ragnael_tb",
       "totalMeses": 1,
@@ -752,14 +736,6 @@
       "tier": 1,
       "fallback": true
     },
-    "honeybriixo": {
-      "username": "honeybriixo",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
     "gl7xd": {
       "username": "gl7xd",
       "totalMeses": 1,
@@ -848,14 +824,6 @@
       "tier": 1,
       "fallback": true
     },
-    "alzxtt": {
-      "username": "alzxtt",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
     "allonne3": {
       "username": "allonne3",
       "totalMeses": 1,
@@ -881,7 +849,7 @@
       "fallback": true
     }
   },
-  "count": 110,
-  "updatedAt": "2026-11-15T00:45:28.416Z",
+  "count": 106,
+  "updatedAt": "2026-11-15T10:23:23.353Z",
   "source": "points_fallback"
 }
