@@ -736,14 +736,6 @@
       "tier": 1,
       "fallback": true
     },
-    "jvnlxz": {
-      "username": "jvnlxz",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
     "juweu": {
       "username": "juweu",
       "totalMeses": 1,
@@ -873,7 +865,7 @@
       "fallback": true
     }
   },
-  "count": 109,
-  "updatedAt": "2026-11-18T02:43:14.019Z",
+  "count": 108,
+  "updatedAt": "2026-11-18T11:07:58.047Z",
   "source": "points_fallback"
 }
