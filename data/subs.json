@@ -680,14 +680,6 @@
       "tier": 1,
       "fallback": true
     },
-    "luky_kim": {
-      "username": "luky_kim",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
     "lukayz1": {
       "username": "lukayz1",
       "totalMeses": 1,
@@ -722,14 +714,6 @@
     },
     "llxtazxll": {
       "username": "llxtazxll",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
-    "lituanodacoreia": {
-      "username": "lituanodacoreia",
       "totalMeses": 1,
       "meses": 1,
       "patinhas": 10,
@@ -873,7 +857,7 @@
       "fallback": true
     }
   },
-  "count": 109,
-  "updatedAt": "2026-11-21T01:57:42.405Z",
+  "count": 107,
+  "updatedAt": "2026-11-21T10:38:31.611Z",
   "source": "points_fallback"
 }
