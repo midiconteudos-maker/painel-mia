@@ -536,14 +536,6 @@
       "tier": 1,
       "fallback": true
     },
-    "travisscotteirro": {
-      "username": "travisscotteirro",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 20,
-      "tier": 1,
-      "fallback": true
-    },
     "taldoluisz": {
       "username": "taldoluisz",
       "totalMeses": 1,
@@ -808,14 +800,6 @@
       "tier": 1,
       "fallback": true
     },
-    "ellieebees": {
-      "username": "ellieebees",
-      "totalMeses": 1,
-      "meses": 1,
-      "patinhas": 10,
-      "tier": 1,
-      "fallback": true
-    },
     "darkwaronline_": {
       "username": "darkwaronline_",
       "totalMeses": 1,
@@ -889,7 +873,7 @@
       "fallback": true
     }
   },
-  "count": 111,
-  "updatedAt": "2026-11-28T01:05:13.063Z",
+  "count": 109,
+  "updatedAt": "2026-11-28T11:21:00.483Z",
   "source": "points_fallback"
 }
